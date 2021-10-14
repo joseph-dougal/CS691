@@ -2,22 +2,23 @@
 <html lang="en">
 
 <head>
-
+  {% block head %}
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Flask Admin with SB Admin 2">
 
-  <title>Alpha</title>
+  <title>{% block title %}{% endblock %} - Alpha</title>
 
   <!-- Custom fonts for this template-->
-  <link href="static/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <link rel="stylesheet" href="static/vendor/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
 
   <!-- Custom styles for this template-->
   <link href="static/css/sb-admin-2.css" rel="stylesheet">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-
+  {% endblock %}
 </head>
 
 <body id="page-top">
@@ -30,7 +31,7 @@
 
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
-          <i class="fas fa-project-diagram"></i>
+        <i class="fas fa-project-diagram"></i>
         <div class="sidebar-brand-text mx-3">Alpha<sup>2</sup></div>
       </a>
 
@@ -44,7 +45,8 @@
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
+          aria-controls="collapseTwo">
           <i class="fas fa-database"></i>
           <span>Data</span>
         </a>
@@ -59,7 +61,8 @@
 
       <!-- Nav Item - Utilities Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+          aria-expanded="true" aria-controls="collapseUtilities">
           <i class="fas fa-fw fa-wrench"></i>
           <span>Utilities</span>
         </a>
@@ -83,7 +86,8 @@
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
+          aria-controls="collapsePages">
           <i class="fas fa-fw fa-folder"></i>
           <span>Routes</span>
         </a>
@@ -148,7 +152,8 @@
 
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
-              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
                 <img class="img-profile rounded-circle" src="static/img/profile.png">
               </a>
               <!-- Dropdown - User Information -->
@@ -170,58 +175,60 @@
         </nav>
         <!-- End of Topbar -->
 
-          <!-- Logout Modal-->
-        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
+        <!-- Logout Modal-->
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header">
+              <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
+                  <span aria-hidden="true">×</span>
                 </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
+              </div>
+              <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+              <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                 <a class="btn btn-primary" href="/logout">Logout</a>
-                </div>
+              </div>
             </div>
-            </div>
+          </div>
         </div>
 
         <div class="col-md-6 text-right">
-        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% with messages = get_flashed_messages(with_categories=true) %}
           {% if messages %}
-            {% for category, message in messages %}
+          {% for category, message in messages %}
 
-              {% if category == "message" %}
-              <div class="alert alert-danger" role="alert">
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-                {{ message }}
-              </div>
-              {% else %}
-              <div class="alert alert-{{ category }}" role="alert">
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-                {{ message }}
-              </div>
-              {% endif %}
-
-            {% endfor %}
+          {% if category == "message" %}
+          <div class="alert alert-danger" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                aria-hidden="true">×</span></button>
+            {{ message }}
+          </div>
+          {% else %}
+          <div class="alert alert-{{ category }}" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                aria-hidden="true">×</span></button>
+            {{ message }}
+          </div>
           {% endif %}
-        {% endwith %}
+
+          {% endfor %}
+          {% endif %}
+          {% endwith %}
         </div>
 
-{% block content %}{% endblock %}
+        {% block content %}{% endblock %}
 
 
       </div>
-       <!--End of Main Content -->
+      <!--End of Main Content -->
 
     </div>
-     <!--End of Content Wrapper -->
+    <!--End of Content Wrapper -->
   </div>
 
 </body>
+
 </html>
-
-
