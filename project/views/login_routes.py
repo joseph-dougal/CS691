@@ -12,38 +12,37 @@ login_routes = Blueprint('login_routes', __name__)
 
 @login_routes.route('/login', methods=['GET', 'POST'])
 def login():
+    if request.method != 'POST':
+        return render_template('login.html')
 
-    if request.method == 'POST':
+    email = request.form['email']
+    password = request.form['password']
 
-        email = request.form['email']
-        password = request.form['password']
+    user = User.query.filter_by(email=email).first()
 
-        user = User.query.filter_by(email=email).first()
+    if user is not None and user.check_password(password) is False:
+        flash('Wrong password, please try again.', 'danger')
+        return redirect(url_for('login_routes.login'))
 
-        if user is not None and user.check_password(password) is False:
-            flash('Wrong password, please try again.', 'danger')
-            return redirect(url_for('login_routes.login'))
+    elif user is None:
+        flash('Invalid email address.', 'danger')
+        return redirect(url_for('login_routes.login'))
 
-        elif user is None:
-            flash('Invalid email address.', 'danger')
-            return redirect(url_for('login_routes.login'))
+    else:
+        user.authenticated = True
+        user.last_logged_in = user.current_logged_in
+        user.current_logged_in = datetime.now()
+        db.session.add(user)
+        db.session.commit()
+        login_user(user)
+        return redirect(url_for('utility_routes.home'))
 
-        else:
-            user.authenticated = True
-            user.last_logged_in = user.current_logged_in
-            user.current_logged_in = datetime.now()
-            db.session.add(user)
-            db.session.commit()
-            login_user(user)
-            return redirect(url_for('utility_routes.home'))
-
-    return render_template('login.html')
+    
 
 
 @login_routes.route('/logout', methods=['GET', 'POST'])
 @login_required
 def logout():
-
     user = current_user
     db.session.add(user)
     db.session.commit()
@@ -54,53 +53,53 @@ def logout():
 
 @login_routes.route('/register', methods=['GET', 'POST'])
 def register():
+    if request.method != 'POST':
+        return render_template('register.html')
+        
+    email = request.form['email']
+    pw = request.form['password']
 
-    if request.method == 'POST':
+    # Check if the user exists
+    user = User.query.filter_by(email=email).first()
+    if user is None:
 
-        email = request.form['email']
-        pw = request.form['password']
+        new_user = User(email, pw)
+        new_user.authenticated = True
+        db.session.add(new_user)
+        db.session.commit()
+        login_user(new_user)
+        flash('Thanks for registering!', 'success')
 
-        # Check if the user exists
-        user = User.query.filter_by(email=email).first()
-        if user is None:
+        return redirect(url_for('utility_routes.home'))
 
-            new_user = User(email, pw)
-            new_user.authenticated = True
-            db.session.add(new_user)
-            db.session.commit()
-            login_user(new_user)
-            flash('Thanks for registering!', 'success')
+    else:
+        flash('Email already exists', 'danger')
+        return render_template('register.html')
 
-            return redirect(url_for('utility_routes.home'))
-
-        else:
-            flash('Email already exists', 'danger')
-            return render_template('register.html')
-
-    return render_template('register.html')
+    
 
 
 @login_routes.route('/forgot-password', methods=['GET', 'POST'])
 def forgot_password():
 
-    if request.method == 'POST':
+    if request.method != 'POST':
+        return render_template('forgot-password.html')
 
-        email = request.form['email']
+    email = request.form['email']
+    try:
+        user = User.query.filter_by(email=email).first_or_404()
+    except:
+        flash('Invalid email address!', 'danger')
+        return redirect(url_for('login_routes.reset'))
 
-        try:
-            user = User.query.filter_by(email=email).first_or_404()
-        except:
-            flash('Invalid email address!', 'danger')
-            return redirect(url_for('login_routes.reset'))
+    if user.email:
+        send_password_reset_email(user.email)
+        flash('Please check your email for a password reset link.', 'info')
+    else:
+        flash('Your email was not found', 'danger')
+    return redirect(url_for('login_routes.login'))
 
-        if user.email:
-            send_password_reset_email(user.email)
-            flash('Please check your email for a password reset link.', 'info')
-        else:
-            flash('Your email was not found', 'danger')
-        return redirect(url_for('login_routes.login'))
 
-    return render_template('forgot-password.html')
 
 
 @login_routes.route('/reset/<token>', methods=['GET', 'POST'])
@@ -113,20 +112,22 @@ def reset_with_token(token):
         flash('The password reset link is invalid or has expired.', 'danger')
         return redirect(url_for('login_routes.login'))
 
-    if request.method == 'POST':
-        new_password = request.form['new_password']
-        try:
-            user = User.query.filter_by(email=email).first_or_404()
-        except:
-            flash('Invalid email address!', 'danger')
-            return redirect(url_for('login_routes.login'))
-
-        user.set_password(new_password)
-        db.session.add(user)
-        db.session.commit()
-        flash('Your password has been updated!', 'success')
+    if request.method != 'POST':
+        return render_template('forgot-password-token.html', token=token)
+        
+    new_password = request.form['new_password']
+    try:
+        user = User.query.filter_by(email=email).first_or_404()
+    except:
+        flash('Invalid email address!', 'danger')
         return redirect(url_for('login_routes.login'))
 
-    return render_template('forgot-password-token.html', token=token)
+    user.set_password(new_password)
+    db.session.add(user)
+    db.session.commit()
+    flash('Your password has been updated!', 'success')
+    return redirect(url_for('login_routes.login'))
+
+    
 
 
