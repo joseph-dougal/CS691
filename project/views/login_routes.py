@@ -1,4 +1,4 @@
-from flask import render_template, Blueprint, request, redirect, url_for, flash, session
+from flask import render_template, Blueprint, request, redirect, url_for, flash
 from flask_login import login_user, current_user, logout_user, login_required
 from project.views.utils import send_password_reset_email
 from itsdangerous import URLSafeTimedSerializer
@@ -13,7 +13,7 @@ login_routes = Blueprint('login_routes', __name__)
 @login_routes.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method != 'POST':
-        return render_template('login.html')
+        return render_template('pages/login.html')
 
     email = request.form['email']
     password = request.form['password']
@@ -54,7 +54,7 @@ def logout():
 @login_routes.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method != 'POST':
-        return render_template('register.html')
+        return render_template('pages/register.html')
         
     email = request.form['email']
     pw = request.form['password']
@@ -74,7 +74,7 @@ def register():
 
     else:
         flash('Email already exists', 'danger')
-        return render_template('register.html')
+        return render_template('pages/register.html')
 
     
 
@@ -83,7 +83,7 @@ def register():
 def forgot_password():
 
     if request.method != 'POST':
-        return render_template('forgot-password.html')
+        return render_template('pages/forgot-password.html')
 
     email = request.form['email']
     try:
@@ -113,7 +113,7 @@ def reset_with_token(token):
         return redirect(url_for('login_routes.login'))
 
     if request.method != 'POST':
-        return render_template('forgot-password-token.html', token=token)
+        return render_template('pages/forgot-password-token.html', token=token)
         
     new_password = request.form['new_password']
     try:
