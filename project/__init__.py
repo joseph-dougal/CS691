@@ -5,13 +5,7 @@ import os
 
 
 app = flask.Flask(__name__)
-app.config['DEBUG'] = True
-
-project_dir = os.path.dirname(os.path.abspath(__file__))
-app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///{}".format(os.path.join(project_dir, "sqlite-db.db"))
-
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SECRET_KEY'] = 'JD_12345'
+app.config.from_pyfile('config.py')
 
 db = SQLAlchemy(app)
 
