@@ -1,11 +1,12 @@
-from flask import render_template, Blueprint, session
-from flask_login import login_required
-
+from flask import render_template, Blueprint
 
 utility_routes = Blueprint('utility_routes', __name__)
 
-
 @utility_routes.route('/', methods=["GET"])
+def index():
+    return render_template('index.html')
+
+@utility_routes.route('/home', methods=["GET"])
 def home():
     return render_template('pages/home.html')
 
