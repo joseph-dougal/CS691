@@ -17,4 +17,4 @@ def db_insert():
 
 if __name__ == '__main__':
     db_setup()
-    db_insert()
+    # db_insert()
