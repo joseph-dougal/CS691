@@ -7,7 +7,7 @@ utility_routes = Blueprint('utility_routes', __name__)
 
 @utility_routes.route('/', methods=["GET"])
 def home():
-    return render_template('index.html')
+    return render_template('pages/home.html')
 
 @utility_routes.route('/blank', methods=["GET"])
 def blank():
