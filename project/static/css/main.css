@@ -1,6 +1,6 @@
 .alert {
     position: fixed !important;
     right: 0 !important;
-    margin-right:30px !important;
+    margin-right: 30px !important;
     z-index: 99999 !important;
 }
