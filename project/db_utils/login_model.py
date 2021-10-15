@@ -17,9 +17,9 @@ class User(db.Model):
     authenticated = db.Column(db.Boolean, default=False)
 
     # Should we not use usernames as primary keys rather than incremental ids?
-    first_name = db.Column(db.String, nullable=False)
-    last_name = db.Column(db.String, nullable=False)
-    username = db.Column(db.String, nullable=False)
+    # first_name = db.Column(db.String, nullable=False)
+    # last_name = db.Column(db.String, nullable=False)
+    # username = db.Column(db.String, nullable=False)
 
     def __init__(self, email, password):
         self.email = email.lower()
