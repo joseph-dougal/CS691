@@ -27,7 +27,7 @@ def home():
         df = pd.read_sql(db.session.query(MathTest).statement, db.engine, parse_dates=True)
         df = df[['question_id', 'question']]
         df = df.rename(columns={'question_id': 'Number', 'question': 'Question'})
-        return render_template('student-math.html', data=df)
+        return render_template('pages/student-math.html', data=df)
 
 
 # @student_routes.route('/answer-update', methods=['GET', 'POST'])

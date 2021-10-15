@@ -29,7 +29,7 @@ def home():
         df = pd.read_sql(db.session.query(MathTest).statement, db.engine, parse_dates=True)
         df = df.rename(columns={'question_id': 'Number', 'user_id': 'User ID', 'question': 'Question',
                                 'create_date': 'Create Date', 'update_time': 'Update Time'})
-        return render_template('teacher-math.html', data=df)
+        return render_template('pages/teacher-math.html', data=df)
 
 
 @teacher_routes.route('/delete', methods=['GET', 'POST'])
