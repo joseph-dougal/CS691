@@ -14,46 +14,22 @@
             <div id="content">
                 {% include 'components/topbar.html' %}
                 {% include 'components/logout.html' %}
-
-                <!-- Flash Message logic -->
-                <div class="col-md-6 text-right">
-                    {% with messages = get_flashed_messages(with_categories=true) %}
-                    {% if messages %}
-                    {% for category, message in messages %}
-
-                    {% if category == "message" %}
-                    <div class="alert alert-danger" role="alert">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
-                                aria-hidden="true">×</span></button>
-                        {{ message }}
-                    </div>
-                    {% else %}
-                    <div class="alert alert-{{ category }}" role="alert">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
-                                aria-hidden="true">×</span></button>
-                        {{ message }}
-                    </div>
-                    {% endif %}
-
-                    {% endfor %}
-                    {% endif %}
-                    {% endwith %}
-                </div>
+                {% include 'components/alert.html' %}
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                     {% block content %}
                     {% endblock %}
                 </div>
-                <!-- /.container-fluid -->
+                <!-- End of Page Content -->
 
 
             </div>
             <!--End of Main Content -->
-
         </div>
         <!--End of Content Wrapper -->
     </div>
+    <!-- End of Page Wrapper -->
 
 </body>
 {% endblock %}
