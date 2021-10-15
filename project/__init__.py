@@ -1,8 +1,6 @@
-from flask_login import current_user, logout_user, login_required, LoginManager
+from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
 import flask
-import os
-
 
 app = flask.Flask(__name__)
 app.config.from_pyfile('config.py')
