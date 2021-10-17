@@ -52,45 +52,10 @@ def home():
         flash('Answer Submitted', 'success')
         return redirect(url_for('student_routes.home'))
     else:
-<<<<<<< HEAD
-        df = pd.read_sql(db.session.query(MathTest).statement, db.engine, parse_dates=True)
-        df = df[['question_id', 'question']]
-        df = df.rename(columns={'question_id': 'Number', 'question': 'Question'})
-        return render_template('pages/student-math.html', data=df)
-
-
-# @student_routes.route('/answer-update', methods=['GET', 'POST'])
-# def delete():
-#
-#     """
-#     The /answer-update route is used to add student answers to the DB
-#     :return:
-#     """
-#
-#     if request.method == 'POST':
-#
-#         user_id = 10
-#         question_id = request.form['question_id']
-#         question = request.form['question']
-#         answer = request.form['answer']
-#
-#         try:
-#             obj = MathTest.query.filter_by(question_id=question_id).one()
-#             db.session.delete(obj)
-#             db.session.commit()
-#             message = 'Question ID {} Deleted'.format(question_id)
-#             flash(message, 'success')
-#             return redirect(url_for('teacher_routes.home'))
-#         except exc.SQLAlchemyError as err:
-#             message = 'Error Deleting Question ID \n' + str(err)
-#             flash(message, 'danger')
-#             return redirect(url_for('teacher_routes.home'))
-=======
         # get math questions & answer df's join to display current answers
         df_test = pd.read_sql(db.session.query(MathTest).statement, db.engine, parse_dates=True)
         df_answer = pd.read_sql(db.session.query(MathAnswer).statement, db.engine, parse_dates=True)
         # left join to get all questions and answers if they exists
         df = df_test.merge(df_answer, how='left', on='question_id')
         df = clean_df(df)
-        return render_template('student-math.html', data=df)
->>>>>>> 050dfd761ff4d820aad53be8bb4143aa14617969
+        return render_template('pages/student-math.html', data=df)

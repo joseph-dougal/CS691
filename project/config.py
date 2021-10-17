@@ -1,4 +1,4 @@
-# backup incase the current URI doesn't work
+# backup in case the current URI doesn't work
 # from os import environ, path
 # database_uri = f'sqlite:///{path.abspath(path.dirname(__file__))}\\sqlite-db.db'
 
