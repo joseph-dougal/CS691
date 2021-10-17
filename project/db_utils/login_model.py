@@ -1,3 +1,4 @@
+from tkinter.tix import COLUMN
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
 from project import db
@@ -14,6 +15,11 @@ class User(db.Model):
     last_logged_in = db.Column(db.DateTime, nullable=True)
     current_logged_in = db.Column(db.DateTime, nullable=True)
     authenticated = db.Column(db.Boolean, default=False)
+
+    # Should we not use usernames as primary keys rather than incremental ids?
+    # first_name = db.Column(db.String, nullable=False)
+    # last_name = db.Column(db.String, nullable=False)
+    # username = db.Column(db.String, nullable=False)
 
     def __init__(self, email, password):
         self.email = email.lower()

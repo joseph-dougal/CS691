@@ -13,7 +13,7 @@ def send_password_reset_email(user_email):
         _external=True)
 
     html = render_template(
-        'email_password_reset.html',
+        'pages/email_password_reset.html',
         password_reset_url=password_reset_url)
 
     send_email('Password Reset Requested', user_email, html)
