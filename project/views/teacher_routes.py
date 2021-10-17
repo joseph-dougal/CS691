@@ -5,8 +5,29 @@ from sqlalchemy import exc
 from project import db
 import pandas as pd
 
+from project.math_logic.equation_builder import Expression
+from random import randrange
 
 teacher_routes = Blueprint('teacher_routes', __name__)
+
+
+def create_math_equation():
+
+    my_equation = Expression()
+    x, y = my_equation.set_variables('x y')
+    my_equation.define(y * y + x * y + 3)
+
+    x_var = randrange(10)
+    y_var = randrange(10)
+
+    answer = my_equation.resolve([x_var, y_var])
+
+    x_var = randrange(10)
+    y_var = randrange(10)
+
+    question = f'What is {my_equation.get_equation()} when x is {x_var} and y is {y_var}'
+
+    return question, answer
 
 
 @teacher_routes.route('/teacher-math-question', methods=['GET', 'POST'])
