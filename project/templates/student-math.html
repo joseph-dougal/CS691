@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+  <!-- Begin Page Content -->
+  <div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+      <h1 class="h3 mb-0 text-gray-800">Math Questions</h1>
+      <a href="/student-math-question" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Load Test</a>
+    </div>
+
+  </div>
+  <!-- /.container-fluid -->
+
+  <!-- data table -->
+  <div class="table-responsive">
+  <table id="teacher-table" class="table" style="width:100%">
+      <thead>
+          <tr>
+              {% for col in data.columns %}
+              <th scope="col"> {{ col }} </th>
+                  {% endfor %}
+              <th> Submit </th>
+          </tr>
+      </thead>
+      <tbody>
+              {% for key, value in data.iterrows() %}
+                <!--{% for k in value %}-->
+                  <!--<td> {{ k }} </td>-->
+                <!--{% endfor %}-->
+          <tr>
+              <td> {{ value[0] }} </td>
+              <td> {{ value[1] }} </td>
+              <form action="/student-math-question" method="POST">
+                  <td><input type="text" name="answer" placeholder="{{ value[2] }}" class="form-control validate" maxlength="50"></td>
+                  <td><span class="border-0"></span><button class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" type="submit">
+                      Update</button></td>
+                  <input type="hidden" name="question_id" value="{{ value[0] }}">
+                  <input type="hidden" name="question" value="{{ value[1] }}">
+              </form>
+              {% endfor %}
+          </tr>
+      </tbody>
+  </table>
+  </div>
+
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="static/vendor/jquery/jquery.min.js"></script>
+  <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="static/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="static/js/sb-admin-2.min.js"></script>
+
+
+{% endblock %}

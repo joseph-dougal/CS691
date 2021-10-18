@@ -37,8 +37,6 @@ def login():
         login_user(user)
         return redirect(url_for('utility_routes.home'))
 
-    
-
 
 @login_routes.route('/logout', methods=['GET', 'POST'])
 @login_required
@@ -76,8 +74,6 @@ def register():
         flash('Email already exists', 'danger')
         return render_template('pages/register.html')
 
-    
-
 
 @login_routes.route('/forgot-password', methods=['GET', 'POST'])
 def forgot_password():
@@ -98,8 +94,6 @@ def forgot_password():
     else:
         flash('Your email was not found', 'danger')
     return redirect(url_for('login_routes.login'))
-
-
 
 
 @login_routes.route('/reset/<token>', methods=['GET', 'POST'])
