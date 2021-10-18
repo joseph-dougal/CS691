@@ -30,6 +30,7 @@ def create_math_equation():
     return question, answer
 
 
+@login_required
 @teacher_routes.route('/teacher-math-question', methods=['GET', 'POST'])
 def home():
 
@@ -53,6 +54,7 @@ def home():
         return render_template('pages/teacher-math.html', data=df)
 
 
+@login_required
 @teacher_routes.route('/delete', methods=['GET', 'POST'])
 def delete():
 
