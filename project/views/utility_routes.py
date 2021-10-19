@@ -1,11 +1,15 @@
 from flask import render_template, Blueprint
+from project import app
+import os
+from os import listdir, path
+from os.path import isfile, join
 
 utility_routes = Blueprint('utility_routes', __name__)
 
-
 @utility_routes.route('/', methods=["GET"])
 def index():
-    return render_template('index.html')
+    carousel = [f for f in listdir(f'{os.path.join(app.root_path)}\static\img\carousel')]
+    return render_template('index.html', carousel=carousel)
 
 
 @utility_routes.route('/home', methods=["GET"])
