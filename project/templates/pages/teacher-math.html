@@ -2,6 +2,18 @@
 {% block title %}Teacher{% endblock %}
 {% block content %}
 
+{% block head %}
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    config: ["MMLorHTML.js"],
+    jax: ["output/HTML-CSS"],
+    extensions: ["MathMenu.js", "MathZoom.js"]
+  });
+  </script>
+{% endblock %}
+
 <!-- buttons -->
 <div class="d-flex justify-content-between align-items-center mt-2 ml-2 mb-4">
   <div>
@@ -33,10 +45,11 @@
       {% for key, value in data.iterrows() %}
       <tr>
         {% for k in value %}
-        <td> {{ k }} </td>
-        {% endfor %}
-        {% endfor %}
+        <!-- Need to configure equations storing: https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference https://personal.math.ubc.ca/~pwalls/math-python/jupyter/latex/ -->
+        <td> \( {{ k }} \)</td>
+        {% endfor %}      
       </tr>
+      {% endfor %}
     </tbody>
   </table>
 </div>
