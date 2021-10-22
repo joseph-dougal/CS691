@@ -3,13 +3,21 @@
 {% block content %}
 
 <!-- buttons -->
-<div class="btn-group mt-2 ml-2 mb-4" role="group">
-  <a href="" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal"
-    data-target="#modalAddForm">Insert Question</a>
+<div class="d-flex justify-content-between align-items-center mt-2 ml-2 mb-4">
+  <div>
+    <h1 class="h3 mb-0 text-gray-800">Math Questions</h1>
+  </div>
+  <div class="btn-group m-2" role="group">
+    <a href="" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm p-2 m-1" data-toggle="modal"
+      data-target="#modalAddForm">Insert Question
+    </a>
 
-  <a href="" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal"
-    data-target="#modalDeleteForm">Delete Question</a>
+    <a href="" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm p-2 m-1" data-toggle="modal"
+      data-target="#modalDeleteForm">Delete Question
+    </a>
+  </div>
 </div>
+
 
 <!-- data table -->
 <div class="table-responsive table-striped">
