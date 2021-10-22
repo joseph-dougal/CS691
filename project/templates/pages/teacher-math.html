@@ -3,15 +3,13 @@
 {% block content %}
 
 {% block head %}
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    config: ["MMLorHTML.js"],
-    jax: ["output/HTML-CSS"],
-    extensions: ["MathMenu.js", "MathZoom.js"]
-  });
-  </script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.js">
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body);">
+</script>
 {% endblock %}
 
 <!-- buttons -->
@@ -47,7 +45,7 @@
         {% for k in value %}
         <!-- Need to configure equations storing: https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference https://personal.math.ubc.ca/~pwalls/math-python/jupyter/latex/ -->
         <td> \( {{ k }} \)</td>
-        {% endfor %}      
+        {% endfor %}
       </tr>
       {% endfor %}
     </tbody>
