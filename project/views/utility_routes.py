@@ -1,8 +1,7 @@
 from flask import render_template, Blueprint
 from project import app
 import os
-from os import listdir, path
-from os.path import isfile, join
+from os import listdir
 
 utility_routes = Blueprint('utility_routes', __name__)
 
