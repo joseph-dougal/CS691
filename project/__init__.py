@@ -26,3 +26,12 @@ app.register_blueprint(login_routes)
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.filter(User.user_id == int(user_id)).first()
+
+@app.errorhandler(404)
+def handle_404(e):
+    return flask.render_template('pages/404.html')
+
+
+@app.errorhandler(401)
+def handle_401(e):
+    return flask.render_template('pages/401.html')
