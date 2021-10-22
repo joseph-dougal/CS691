@@ -8,7 +8,7 @@ utility_routes = Blueprint('utility_routes', __name__)
 
 @utility_routes.route('/', methods=["GET"])
 def index():
-    carousel = [f for f in listdir(f'{os.path.join(app.root_path)}\static\img\carousel')]
+    carousel = [f for f in listdir(f'{os.path.join(app.root_path)}/static/img/carousel')]
     return render_template('index.html', carousel=carousel)
 
 
