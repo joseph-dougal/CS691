@@ -10,6 +10,9 @@ def index():
     carousel = [f for f in listdir(f'{os.path.join(app.root_path)}/static/img/carousel')]
     return render_template('index.html', carousel=carousel)
 
+@utility_routes.route('/educators_h', methods=["GET"])
+def index_ed():
+    return render_template('index-educators.html')
 
 @utility_routes.route('/home', methods=["GET"])
 def home():

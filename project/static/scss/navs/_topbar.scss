@@ -5,10 +5,10 @@
     height: 2.5rem;
     width: 2.5rem;
     &:hover {
-      background-color: $gray-200;
+      background-color: cadetblue;
     }
     &:active {
-      background-color: $gray-300;
+      background-color: lightcoral;
     }
   }
   .navbar-search {
@@ -19,7 +19,7 @@
     }
   }
   .topbar-divider {
-    width: 0;
+    width: 2px;
     border-right: 1px solid $border-color;
     height: calc(#{$topbar-base-height} - 2rem);
     margin: auto 1rem;
@@ -87,8 +87,8 @@
         max-width: 10rem;
       }
       &:active {
-        background-color: $gray-200;
-        color: $gray-900;
+        background-color: coral;
+        color: bisque;
       }
     }
   }
@@ -117,12 +117,12 @@
   .navbar-nav {
     .nav-item {
       .nav-link {
-        color: $gray-400;
+        color: bisque;
         &:hover {
-          color: $gray-500;
+          color: cadetblue;
         }
         &:active {
-          color: $gray-600;
+          color: cornflowerblue;
         }
       }
     }
