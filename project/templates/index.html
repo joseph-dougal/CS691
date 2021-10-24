@@ -3,7 +3,7 @@
 
 {% block body %}
 
-<body>
+<body data-spy="scroll" data-target="#navbarLanding">
     <header>
         <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-white">
             <div class="container-fluid">
@@ -25,18 +25,18 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Features</a>
+                            <a class="nav-link" href="#features">Features</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Pricing</a>
+                            <a class="nav-link" href="#price_table">Pricing</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Contact</a>
+                            <a class="nav-link" href="#contact_section">Contact</a>
                         </li>
                         <div class="b-nav-divider"></div>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#">For educators</a>
+                            <a class="nav-link" href="/index-educators">For educators</a>
                         </li>
                         <div class="b-nav-divider"></div>
 
@@ -64,8 +64,8 @@
                                 we provided you with the best automated resources to ensure you succeed.
                             </p>
                             <div class="slider-btn">
-                                <button class="btn student_btn1">Register Free!</button>
-                                <button class="btn student_btn2">Learn more</button>
+                                <button class="btn student_btn1" href="/register">Register Free!</button>
+                                <button class="btn student_btn2" href ="">Learn more</button>
                             </div>
                         </div>
                     </div>
@@ -102,142 +102,121 @@
 
                 <!-------------------------------- Features Section----------------------------------------->
 
-                <section>
-                </section>
+                <div id="features">
+                </div>
+
+
+
                 <!--------------------------------Price Section----------------------------------------->
-                <section class="pricing-table">
+                <div id="price_table">
                     <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
                         <h1 class="display-4 fw-normal">Pricing</h1>
                         <p class="fs-5 text-muted">We have a felxible subscription model to meet your academic needs.</p>
                     </div>
 
-                    <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
-                        <div class="col">
-                            <div class="card mb-4 rounded-3 shadow-sm">
-                                <div class="card-header py-3">
-                                    <h4 class="my-0 fw-normal">Free</h4>
+                    <div class="pricing">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="pricingTable">
+                                        <div class="pricingTable-header">
+                                            <h3 class="title">Free</h3>
+                                            <div class="price-value">
+                                                <span class="amount">$0</span>
+                                                <span class="duration">/month</span>
+                                            </div>
+                                        </div>
+                                        <div class="pricing-content">
+                                            <ul>
+                                                <li>A.I. study guide</li>
+                                                <li class="disable">A.I. assignment review</li>
+                                                <li class="disable">Teacher feedback</li>
+                                                <li>A.I. Support</li>
+                                                <li class="disable">Commitment</li>
+                                            </ul>
+                                            <div class="pricingTable-signup">
+                                                <a href="/register">Sign Up</a>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="card-body">
-                                    <h1 class="card-title pricing-card-title">$0<small class="text-muted fw-light">/mo</small></h1>
-                                    <ul class="list-unstyled mt-3 mb-4">
-                                        <li>A.I. study guide</li>
-                                        <li>Limited assignment review</li>
-                                        <li>No Teacher feedback</li>
-                                        <li>No A.I. Support</li>
-                                    </ul>
-                                    <button type="button" class="w-100 btn btn-lg btn-outline-primary">Sign up for free</button>
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="pricingTable babyblue">
+                                        <div class="pricingTable-header">
+                                            <h3 class="title">Basic</h3>
+                                            <div class="price-value">
+                                                <span class="amount">$9.99</span>
+                                                <span class="duration">/month</span>
+                                            </div>
+                                        </div>
+                                        <div class="pricing-content">
+                                            <ul>
+                                                <li>A.I. study guide</li>
+                                                <li class="disable">A.I. assignment review</li>
+                                                <li>Teacher feedback</li>
+                                                <li>A.I. Support</li>
+                                                <li class="disable">Commitment</li>
+                                            </ul>
+                                            <div class="pricingTable-signup">
+                                                <a href="#">Sign Up</a>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card mb-4 rounded-3 shadow-sm">
-                                <div class="card-header py-3">
-                                    <h4 class="my-0 fw-normal">Basic</h4>
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="pricingTable choco">
+                                        <div class="pricingTable-header">
+                                            <h3 class="title">Pro</h3>
+                                            <div class="ribbon">Popular</div>
+                                            <div class="price-value">
+                                                <span class="amount">$10</span>
+                                                <span class="duration">/month</span>
+                                            </div>
+                                        </div>
+                                        <div class="pricing-content">
+                                            <ul>
+                                                <li>A.I. study guide</li>
+                                                <li>A.I. assignment review</li>
+                                                <li>Teacher feedback</li>
+                                                <li>A.I. Support</li>
+                                                <li>Commitment: 4 months</li>
+                                            </ul>
+                                            <div class="pricingTable-signup">
+                                                <a href="#">Sign Up</a>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="card-body">
-                                    <h1 class="card-title pricing-card-title">$14.99</h1>
-                                    <ul class="list-unstyled mt-3 mb-4">
-                                        <li>A.I. study guide</li>
-                                        <li>Assignment review</li>
-                                        <li>Teacher feedback</li>
-                                        <li>A.I. Support</li>
-                                        <li>Duration: 1 month</li>
-                                    </ul>
-                                    <button type="button" class="w-100 btn btn-lg btn-outline-primary">Sign up</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card mb-4 rounded-3 shadow-sm border-primary">
-                                <div class="ribbon">Popular</div>
-                                <div class="card-header py-3">
-                                    <h4 class="my-0 fw-normal">Pro</h4>
-                                </div>
-                                <div class="card-body">
-                                    <h1 class="card-title pricing-card-title">$30</h1>
-                                    <ul class="list-unstyled mt-3 mb-4">
-                                        <li>A.I. study guide</li>
-                                        <li>Assignment review</li>
-                                        <li>Teacher feedback</li>
-                                        <li>A.I. Support</li>
-                                        <li>Duration: 3 months</li>
-                                    </ul>
-                                    <button type="button" class="w-100 btn btn-lg btn-outline-primary">Sign up</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card mb-4 rounded-3 shadow-sm border-primary">
-                                <div class="card-header py-3 text-white bg-primary border-primary">
-                                    <h4 class="my-0 fw-normal">Elite</h4>
-                                </div>
-                                <div class="card-body">
-                                    <h1 class="card-title pricing-card-title">$65</h1>
-                                    <ul class="list-unstyled mt-3 mb-4">
-                                        <li>A.I. study guide</li>
-                                        <li>Assignment review</li>
-                                        <li>Teacher feedback</li>
-                                        <li>A.I. Support</li>
-                                        <li>Duration: 12 months</li>
-                                    </ul>
-                                    <button type="button" class="w-100 btn btn-lg btn-primary">Sign up</button>
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="pricingTable cadetblue">
+                                        <div class="pricingTable-header">
+                                            <h3 class="title">Elite</h3>
+                                            <div class="ribbon">Best Value</div>
+                                            <div class="price-value">
+                                                <span class="amount">$5</span>
+                                                <span class="duration">/month</span>
+                                            </div>
+                                        </div>
+                                        <div class="pricing-content">
+                                            <ul>
+                                                <li>A.I. study guide</li>
+                                                <li>A.I. assignment review</li>
+                                                <li>Teacher feedback</li>
+                                                <li>A.I. Support</li>
+                                                <li>Commitment: 12 months</li>
+                                            </ul>
+                                            <div class="pricingTable-signup">
+                                                <a href="#">Sign Up</a>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+````````````````</div>
 
-                    <h2 class="display-6 text-center mb-4">Compare plans</h2>
-
-                    <div class="table-responsive">
-                        <table class="table text-center">
-                            <thead>
-                                <tr>
-                                    <th style="width: 30%;"></th>
-                                    <th style="width: 15%;">Free</th>
-                                    <th style="width: 15%;">Basic</th>
-                                    <th style="width: 15%;">Pro</th>
-                                    <th style="width: 15%;">Elite</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row" class="text-start">A.I study guide</th>
-                                    <td><svg class="bi" width="24" height="24"><use xlink:href="#check" /></svg></td>
-                                    <td><svg class="bi" width="24" height="24"><use xlink:href="#check" /></svg></td>
-                                    <td><svg class="bi" width="24" height="24"><use xlink:href="#check" /></svg></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row" class="text-start">A.I. assigment review</th>
-                                    <td></td>
-                                    <td><svg class="bi" width="24" height="24"><use xlink:href="#check" /></svg></td>
-                                    <td><svg class="bi" width="24" height="24"><use xlink:href="#check" /></svg></td>
-                                </tr>
-                            </tbody>
-
-                            <tbody>
-                                <tr>
-                                    <th scope="row" class="text-start">Teacher feedback</th>
-                                    <td><svg class="bi" width="24" height="24"><use xlink:href="#check" /></svg></td>
-                                    <td><svg class="bi" width="24" height="24"><use xlink:href="#check" /></svg></td>
-                                    <td><svg class="bi" width="24" height="24"><use xlink:href="#check" /></svg></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row" class="text-start">A.I. support</th>
-                                    <td></td>
-                                    <td><svg class="bi" width="24" height="24"><use xlink:href="#check" /></svg></td>
-                                    <td><svg class="bi" width="24" height="24"><use xlink:href="#check" /></svg></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row" class="text-start">Text books</th>
-                                    <td></td>
-                                    <td><svg class="bi" width="24" height="24"><use xlink:href="#check" /></svg></td>
-                                    <td><svg class="bi" width="24" height="24"><use xlink:href="#check" /></svg></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-
+         
                 <!----------------------------------Contact Form Section----------------------------------->
                 <!-- Section: Contact  -->
                 <div class="container-fluid" id="contact_section">

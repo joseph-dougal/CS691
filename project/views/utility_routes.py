@@ -7,6 +7,9 @@ utility_routes = Blueprint('utility_routes', __name__)
 def index():
     return render_template('index.html')
 
+@utility_routes.route('/educators_h', methods=["GET"])
+def index_ed():
+    return render_template('index-educators.html')
 
 @utility_routes.route('/home', methods=["GET"])
 def home():
