@@ -14,13 +14,11 @@ class User(db.Model):
     last_logged_in = db.Column(db.DateTime, nullable=True)
     current_logged_in = db.Column(db.DateTime, nullable=True)
     authenticated = db.Column(db.Boolean, default=False)
+    first_name = db.Column(db.String, nullable=False)
+    last_name = db.Column(db.String, nullable=False)
+    username = db.Column(db.String, nullable=False)
 
-    # Should we not use usernames as primary keys rather than incremental ids?
-    # first_name = db.Column(db.String, nullable=False)
-    # last_name = db.Column(db.String, nullable=False)
-    # username = db.Column(db.String, nullable=False)
-
-    def __init__(self, email, password):
+    def __init__(self, email, password, firstname, lastname, username):
         self.email = email.lower()
         self.set_password(password)
 
@@ -28,6 +26,9 @@ class User(db.Model):
         self.last_logged_in = None
         self.current_logged_in = datetime.now()
         self.authenticated = True
+        self.first_name = firstname
+        self.last_name = lastname
+        self.username = username
 
     def set_password(self, password):
         self.password = generate_password_hash(password)

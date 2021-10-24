@@ -56,12 +56,15 @@ def register():
         
     email = request.form['email']
     pw = request.form['password']
+    username = request.form['username']
+    first_name = request.form['firstname']
+    last_name = request.form['lastname']
 
     # Check if the user exists
     user = User.query.filter_by(email=email).first()
     if user is None:
 
-        new_user = User(email, pw)
+        new_user = User(email, pw, first_name, last_name, username)
         new_user.authenticated = True
         db.session.add(new_user)
         db.session.commit()

@@ -5,6 +5,7 @@
     z-index: 99999 !important;
 }
 
+
 /*------------------Navigation Bar---------------*/
 .navbar {
     padding-top: 20px;
@@ -283,6 +284,7 @@
     width: 100%;
     position: absolute;
 }
+
 
 
 /*responsive css*/
