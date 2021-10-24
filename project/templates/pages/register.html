@@ -7,6 +7,23 @@
 <form action='/register' class="user" method="POST">
   
   <div class="form-group">
+    <input type="text" class="form-control form-control-user" id="username" name="username"
+      placeholder="Pick a username" required>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-sm-6 mb-3 mb-sm-0">
+      <input type="text" class="form-control form-control-user" name="firstname" id="firstname" placeholder="First Name"
+        required>
+    </div>
+
+    <div class="col-sm-6">
+      <input type="text" class="form-control form-control-user" name="lastname" id="lastname" placeholder="Last Name" 
+      required>
+    </div>
+  </div>
+
+  <div class="form-group">
     <input type="email" class="form-control form-control-user" id="exampleInputEmail" name="email"
       placeholder="Email Address" required>
   </div>
@@ -16,7 +33,7 @@
       <input type="password" class="form-control form-control-user" name="password" id="password" placeholder="Password"
         required>
     </div>
-    
+
     <div class="col-sm-6">
       <input type="password" class="form-control form-control-user" name="confirm_password" id="confirm_password"
         placeholder="Repeat Password" required>
