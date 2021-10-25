@@ -10,27 +10,18 @@
 .navbar {
     padding-top: 20px;
     margin-bottom: 20px;
+    font-weight:700;
 }
 
-.navbar-text{
-
-}
-
-.lnav-divider {
-    width: 5px;
-    border-right: 1px solid; 
+.navbar-light .navbar-nav .nav-link{
     color: black;
-    height: 2rem;
-    margin: auto 1rem;
 }
 
-
-.b-nav-divider {
-    height: 3rem;
-    background-color: rgba(0, 0, 0, .1);
-    border: solid rgba(0, 0, 0, .15);
-    border-width: 1px 0;
+.navbar-light .navbar-nav .nav-link.active,
+.navbar-light .navbar-nav .nav-link:hover{
+    color: cadetblue;
 }
+
 /*---------Hero Slider Section------------------*/
 .carousel {
     margin-bottom: 4rem;
@@ -41,11 +32,11 @@
     top: 0;
     left: 0;
     min-width: 100%;
-    height: 60rem;
+    height: 100vh;
 }
 
 .carousel-item{
-    height: 60rem;
+    height: 100vh;
     background: no-repeat scroll center scroll;
     -webkit-background-size: cover;
     background-size: cover;
@@ -62,20 +53,21 @@
     opacity: 0.5;
 }
 .carousel-caption{
-    bottom: 180px;
+    bottom: 120px;
     padding-left: 50px;
     padding-right: 50px;
     z-index: 10;
-    
 }
 
 .carousel-item .caption {
     background-color: rgba(0, 0, 0, .7);
+    transform: translateY(-60%)
 }
 
 .carousel-caption h1{
-    font-size: 80px;
-    font-weight: 500;
+    font-size: 50px;
+    font-weight: 700;
+    color:antiquewhite;
 }
 .carousel-caption p{
     font-size: 20px;
@@ -138,89 +130,99 @@
 
 
 /*------------------Price Section----------*/
+.pricing-header {
+    margin-top: 60px;
+    max-width: 700px;
+}
+
 .pricingTable {
-    background: lightcoral;
-    font-family: 'Lato', sans-serif;
+    background: #fff;
+    font-family: Roboto, sans-serif;
     text-align: center;
-    padding: 0 5px 30px;
-    border-radius: 30px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    padding: 20px 0 30px;
 }
 
 .pricingTable .pricingTable-header {
     color: #fff;
-    padding: 25px 0;
-}
-
-.pricingTable .title {
-    font-size: 44px;
-    font-weight: 700;
-    line-height: 35px;
-    text-transform: uppercase;
+    background: linear-gradient(to right,lightcoral,#00b3c3);
+    padding: 30px 20px 60px;
     margin: 0 0 10px;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 75%, 0 100%);
 }
 
 .pricingTable .price-value {
-    color: #fff;
-    position: relative;
+    padding-left: 25px;
 }
 
-    .pricingTable .price-value .amount {
-        font-size: 45px;
-        font-weight: 600;
-        line-height: 44px;
-    }
+.pricingTable .price-value .currency {
+    font-size: 35px;
+    font-weight: 500;
+    line-height: 45px;
+    vertical-align: top;
+    display: inline-block;
+}
+.pricingTable .price-value .amount {
+    font-size: 80px;
+    font-weight: 500;
+    line-height: 80px;
+    display: inline-block;
+}
 
-    .pricingTable .price-value .duration {
-        font-size: 25px;
-        font-weight: 400;
-    }
+.pricingTable .price-value .duration {
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin: 2px 0 0 -20px;
+    display: inline-block;
+}
+
+.pricingTable .title {
+    color: lightcoral;
+    font-size: 45px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin: 0 0 30px;
+}
 
 .pricingTable .pricing-content {
-    background: #fff;
-    padding: 15px 0;
-    border-radius: 20px;
+    font-family: 'Lato', sans-serif;
+    padding: 0 33px;
+    margin: 0 0 30px;
+    list-style: none;
 }
 
-    .pricingTable .pricing-content ul {
-        padding: 0 10px;
-        margin: 0 0 20px;
-        list-style: none;
-    }
-
-.pricingTable .pricing-content ul li {
-    color: #777;
+.pricingTable .pricing-content li {
+    color: #555;
+    background: #efefef;
     font-size: 16px;
     font-weight: 600;
-    letter-spacing: 0.5px;
-    line-height: 35px;
-    text-transform: capitalize;
-    text-align: left;
-    padding: 0 35px 0 10px;
-    margin: 0 0 10px;
-    border-bottom: 1px solid #ccc;
+    line-height: 40px;
+    text-transform: uppercase;
+    padding: 5px 15px 5px 50px;
+    margin: 0 0 5px;
     position: relative;
 }
 
-.pricingTable .pricing-content ul li:last-child {
+.pricingTable .pricing-content li:last-child {
     margin-bottom: 0;
 }
 
-.pricingTable .pricing-content ul li:before {
+.pricingTable .pricing-content li:before {
     content: "\f00c";
     color: #fff;
-    background: lightcoral;
+    background: linear-gradient(to right,lightcoral,#00b3c3);
     font-family: "Font Awesome 5 Free";
-    font-size: 18px;
+    font-size: 14px;
     font-weight: 900;
-    text-align: center;
-    line-height: 30px;
-    width: 30px;
-    height: 30px;
+    line-height: 23px;
+    width: 23px;
+    height: 23px;
     border-radius: 50%;
     position: absolute;
-    top: 0;
-    right: 5px;
+    top: 15px;
+    left: 15px;
 }
 
 .pricingTable .pricing-content li.disable:before {
@@ -229,47 +231,81 @@
 
 .pricingTable .pricingTable-signup a {
     color: #fff;
-    background: lightcoral;
+    background: linear-gradient(to right,lightcoral,#00b3c3);
     font-size: 25px;
-    font-weight: 600;
-    letter-spacing: 0.5px;
+    font-weight: 700;
     text-transform: uppercase;
-    line-height: 25px;
-    padding: 7px 15px;
+    padding: 3px 30px 4px;
     border-radius: 50px;
     display: inline-block;
-    transition: all 0.3s ease 0s;
+    transition: all 0.3s;
 }
 
 .pricingTable .pricingTable-signup a:hover {
-    text-shadow: -2px 2px 3px rgba(0, 0, 0, 0.6);
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.4);
 }
 
-.pricingTable.cadetblue,
-.pricingTable.cadetblue .pricing-content ul li:before,
+
+.pricingTable.cadetblue .pricingTable-header,
+.pricingTable.cadetblue .pricing-content li:before,
 .pricingTable.cadetblue .pricingTable-signup a {
-    background:cadetblue;
+    background: linear-gradient(to right,cadetblue,#56ab2f);
 }
 
-.pricingTable.choco,
-.pricingTable.choco .pricing-content ul li:before,
+.pricingTable.babyblue .title {
+    color: cadetblue;
+}
+
+.pricingTable.choco .pricingTable-header,
+.pricingTable.choco .pricing-content li:before,
 .pricingTable.choco .pricingTable-signup a {
-    background: rgb(148 82 10);
+    background: linear-gradient(to right,rgb(148 82 10),#974686);
 }
 
-.pricingTable.babyblue,
-.pricingTable.babyblue .pricing-content ul li:before,
+.pricingTable.choco .title {
+    color: rgb(148 82 10);
+}
+
+.pricingTable.babyblue .pricingTable-header,
+.pricingTable.babyblue .pricing-content li:before,
 .pricingTable.babyblue .pricingTable-signup a {
-    background: #4079de;
+    background: linear-gradient(to right,#4079de,#56ab2f);
 }
 
-@media only screen and (max-width: 990px) {
-    .pricingTable {
-        margin: 0 0 40px 10px;
-    }
+.pricingTable.babyblue .title {
+    color: #4079de;
+}
+
+.pricingTable .ribbon {
+    width: 160px;
+    height: 32px;
+    font-size: 12px;
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+    box-shadow: 0px 2px 3px rgba(136, 136, 136, 0.25);
+    background: #4dbe3b;
+    transform: rotate(45deg);
+    position: absolute;
+    right: -42px;
+    top: 30px;
+    padding-top: 7px;
+}
+
+.pricingTable .sidenote {
+    font-size: 10px;
+    text-align:center;
+    color: black;
 }
 
 /*-----------Contact Section-------------*/
+.mycontact .contact-header {
+    margin-top: 60px;
+    max-width: 700px;
+    text-align:center;
+}
+
 .map-container-section {
     overflow: hidden;
     padding-bottom: 56.25%;
@@ -285,19 +321,33 @@
     position: absolute;
 }
 
+/*-----------Footer Section-------------*/
+.fixed-bottom {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #4079de;
+    padding: 2px 15px 2px 15px;
+}
 
+.fixed-bottom .p-3 {
+    
+}
+
+<<<<<<< Updated upstream
 
 /*responsive css*/
+=======
+>>>>>>> Stashed changes
 
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-    .carousel-caption {
-        padding-bottom: 350px;
+/*------------------responsive css-----------------------------*/
+
+/*@media only screen and (min-width: 768px) and (max-width: 991px) {
+
+    .carousel-caption h2 {
+        font-size: 50px;
     }
-
-        .carousel-caption h2 {
-            font-size: 50px;
-        }
-}
+}*/
 
 @media only screen and (max-width: 767px) {
     .navbar-inverse .navbar-brand {
@@ -308,14 +358,8 @@
     .navbar-collapse {
         background: rgba(0, 0, 0, 0.5);
     }
-
-    .carousel-caption {
-        padding-bottom: 120px;
-    }
-    .carousel-item {
-        height: 32rem;
-    }
-    .carousel-caption h2 {
+    
+    .carousel-caption h1 {
         font-size: 25px;
     }
 
@@ -344,5 +388,11 @@
         margin-bottom: 1.25rem;
         font-size: 1.25rem;
         line-height: 1.4;
+    }
+}
+
+@media only screen and (max-width: 990px) {
+    .pricingTable {
+        margin: 0 0 40px 10px;
     }
 }

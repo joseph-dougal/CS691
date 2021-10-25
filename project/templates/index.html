@@ -34,15 +34,18 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#contact_section">Contact</a>
                         </li>
-                        <div class="b-nav-divider"></div>
+
+                        <div class="dropdown-divider"></div>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="/index-educators">For educators</a>
+                            <a class="nav-link border-left border-dark" href="/educators_h">
+                            For educators</a>
                         </li>
-                        <div class="b-nav-divider"></div>
+
+                        <div class="dropdown-divider"></div>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="/login">Sign in</a>
+                            <a class="nav-link border-left border-dark" href="/login">Sign in</a>
                         </li>
                     </ul>
                 </div>
@@ -53,7 +56,8 @@
     <main>
         <!-----------------------------Image Slider-------------------------------------------->
         <div class="container-fluid" id="Page_Slider">
-            <div id="LandingSlides" class="carousel slide carousel-fade" data-ride="carousel">
+            <div id="LandingSlides" class="carousel slide carousel-fade" data-ride="carousel" 
+                 data-interval="3500">
                 <div class="carousel-inner">
 
                     <div class="carousel-item active">
@@ -65,8 +69,8 @@
                                 we provided you with the best automated resources to ensure you succeed.
                             </p>
                             <div class="slider-btn">
-                                <button class="btn student_btn1" href="/register">Register Free!</button>
-                                <button class="btn student_btn2" href ="">Learn more</button>
+                                <a class="btn student_btn1" role="button" href="/register">Register Free!</a>
+                                <a class="btn student_btn2" role="button" href ="#features">Learn more</a>
                             </div>
                         </div>
                     </div>
@@ -79,8 +83,8 @@
                                 resources to help you study confidently.
                             </p>
                             <div class="slider-btn">
-                                <button class="btn teacher_btn1">Register Today!</button>
-                                <button class="btn teacher_btn2">Learn more</button>
+                                <a class="btn student_btn1" role="button" href ="/register">Register Today!</a>
+                                <a class="btn teacher_btn2" role="button" href="#features">Learn more</a>
                             </div>
                         </div>
                     </div>
@@ -94,8 +98,8 @@
                                 A.I. assistance you'll stay ahead of your class.
                             </p>
                             <div class="slider-btn">
-                                <button class="btn student_btn1">Register Free!</button>
-                                <button class="btn student_btn2">Learn more</button>
+                                <a class="btn student_btn1" role="button" href ="/register">Register Free!</a>
+                                <a class="btn student_btn2" role="button" href="#features">Learn more</a>
                             </div>
                         </div>
                     </div>
@@ -104,131 +108,135 @@
                 <!-------------------------------- Features Section----------------------------------------->
 
                 <div id="features">
+                    <div class="jumbotron container-fluid">
+                        <h2 class="heading text-center">Features</h2>
+                        <div class="heading-underline"></div>
+
+                    </div>
+
                 </div>
-
-
 
                 <!--------------------------------Price Section----------------------------------------->
                 <div id="price_table">
                     <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
                         <h1 class="display-4 fw-normal">Pricing</h1>
-                        <p class="fs-5 text-muted">We have a felxible subscription model to meet your academic needs.</p>
+                        <p class="lead fs-5 text-muted">We have a felxible subscription model to meet your academic needs.</p>
                     </div>
 
                     <div class="pricing">
                         <div class="container">
                             <div class="row">
-                                <div class="col-md-3 col-sm-6">
+                                <div class="col-lg-3 col-md-6 col-sm-6">
                                     <div class="pricingTable">
                                         <div class="pricingTable-header">
-                                            <h3 class="title">Free</h3>
                                             <div class="price-value">
-                                                <span class="amount">$0</span>
+                                                <span class="currency">$</span>
+                                                <span class="amount">0</span>
                                                 <span class="duration">/month</span>
                                             </div>
                                         </div>
-                                        <div class="pricing-content">
-                                            <ul>
-                                                <li>A.I. study guide</li>
-                                                <li class="disable">A.I. assignment review</li>
-                                                <li class="disable">Teacher feedback</li>
-                                                <li>A.I. Support</li>
-                                                <li class="disable">Commitment</li>
-                                            </ul>
-                                            <div class="pricingTable-signup">
-                                                <a href="/register">Sign Up</a>
-                                            </div>
-                                        </div>
+                                        <h3 class="title">Free</h3>
+                                        <ul class="pricing-content">
+                                            <li>Study guide</li>
+                                            <li class="disable">Assignment review</li>
+                                            <li class="disable">Teacher feedback</li>
+                                            <li class="disable">Support</li>
+                                            <li class="disable">Commitment</li>
+                                        </ul>
+                                        <div class="pricingTable-signup">
+                                            <a href="/register">Sign Up</a>
+                                        </div>    
                                     </div>
                                 </div>
-                                <div class="col-md-3 col-sm-6">
+                                <div class="col-lg-3 col-md-6 col-sm-6">
                                     <div class="pricingTable babyblue">
                                         <div class="pricingTable-header">
-                                            <h3 class="title">Basic</h3>
                                             <div class="price-value">
-                                                <span class="amount">$9.99</span>
+                                                <span class="currency">$</span>
+                                                <span class="amount">8.99</span>
                                                 <span class="duration">/month</span>
                                             </div>
                                         </div>
-                                        <div class="pricing-content">
-                                            <ul>
-                                                <li>A.I. study guide</li>
-                                                <li class="disable">A.I. assignment review</li>
-                                                <li>Teacher feedback</li>
-                                                <li>A.I. Support</li>
-                                                <li class="disable">Commitment</li>
-                                            </ul>
-                                            <div class="pricingTable-signup">
-                                                <a href="#">Sign Up</a>
-                                            </div>
-                                        </div>
+                                        <h3 class="title">Basic</h3>
+                                        <ul class="pricing-content">
+                                            <li>Study guide</li>
+                                            <li class="disable">Assignment review</li>
+                                            <li>Teacher feedback</li>
+                                            <li class="disable">Support</li>
+                                            <li class="disable">Commitment</li>
+                                        </ul>
+                                        <div class="pricingTable-signup">
+                                            <a href="#">Sign Up</a>
+                                        </div>   
                                     </div>
                                 </div>
-                                <div class="col-md-3 col-sm-6">
+                                <div class="col-lg-3 col-md-6 col-sm-6">
                                     <div class="pricingTable choco">
                                         <div class="pricingTable-header">
-                                            <h3 class="title">Pro</h3>
                                             <div class="ribbon">Popular</div>
                                             <div class="price-value">
-                                                <span class="amount">$10</span>
+                                                <span class="currency">$</span>
+                                                <span class="amount">10</span>
                                                 <span class="duration">/month</span>
                                             </div>
                                         </div>
-                                        <div class="pricing-content">
-                                            <ul>
-                                                <li>A.I. study guide</li>
-                                                <li>A.I. assignment review</li>
-                                                <li>Teacher feedback</li>
-                                                <li>A.I. Support</li>
-                                                <li>Commitment: 4 months</li>
-                                            </ul>
-                                            <div class="pricingTable-signup">
-                                                <a href="#">Sign Up</a>
-                                            </div>
+                                        <h3 class="title">Pro</h3>
+                                        <ul class="pricing-content">
+                                            <li>Study guide</li>
+                                            <li>Assignment review</li>
+                                            <li>Teacher feedback</li>
+                                            <li>Support</li>
+                                            <li>Commitment</li>
+                                        </ul>
+                                        <div class="pricingTable-signup">
+                                            <a href="#">Sign Up</a>
                                         </div>
+                                        <p class="sidenote">One time payment for 4 months required.</p>
                                     </div>
                                 </div>
-                                <div class="col-md-3 col-sm-6">
+                                <div class="col-lg-3 col-md-6 col-sm-6">
                                     <div class="pricingTable cadetblue">
                                         <div class="pricingTable-header">
-                                            <h3 class="title">Elite</h3>
                                             <div class="ribbon">Best Value</div>
                                             <div class="price-value">
-                                                <span class="amount">$5</span>
+                                                <span class="currency">$</span>
+                                                <span class="amount">5</span>
                                                 <span class="duration">/month</span>
                                             </div>
                                         </div>
-                                        <div class="pricing-content">
-                                            <ul>
-                                                <li>A.I. study guide</li>
-                                                <li>A.I. assignment review</li>
-                                                <li>Teacher feedback</li>
-                                                <li>A.I. Support</li>
-                                                <li>Commitment: 12 months</li>
-                                            </ul>
-                                            <div class="pricingTable-signup">
-                                                <a href="#">Sign Up</a>
-                                            </div>
+                                        <h3 class="title">Elite</h3>
+                                        <ul class="pricing-content">
+                                            <li>Study guide</li>
+                                            <li>Assignment review</li>
+                                            <li>Teacher feedback</li>
+                                            <li>Support</li>
+                                            <li>Commitment</li>
+                                        </ul>
+                                        <div class="pricingTable-signup">
+                                            <a href="#">Sign Up</a>
                                         </div>
+                                        <p class="sidenote">One time payment for 12 months required.</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-````````````````</div>
+                </div>
 
          
                 <!----------------------------------Contact Form Section----------------------------------->
                 <!-- Section: Contact  -->
-                <div class="container-fluid" id="contact_section">
+                <div class="container-fluid mycontact" id="contact_section">
+                    <div class="contact-header "></div>
                     <section class="my-5">
 
                         <!-- Section heading -->
                         <h1 class="h1-responsive font-weight-bold text-center">Contact Us</h1>
                         <!-- Section description -->
-                        <p class="text-center w-responsive">
+                        <p class="lead text-center w-responsive">
                             We would love to hear from you.
                         </p>
+
                         <!-- Wrapper container -->
                         <div class="container-fluid py-4">
                             <!-- Grid row -->
@@ -335,10 +343,18 @@
     </main>
 
 
+<<<<<<< Updated upstream
   <footer class="bg-primary text-center flex-shrink-0 py-4 mt-auto text-light">
     <div class="p-3">
       © 2021 Copyright: <a class="text-light" href="/">Smart<sup>Grader</sup></a>
     </div>
   </footer>
+=======
+    <footer class="text-center flex-shrink-0 py-4 mt-auto text-light">
+        <div class="fixed-bottom p-3">
+            © 2021 Copyright: <a class="text-light" href="/">Smart<sup>Grader</sup></a>
+        </div>
+    </footer>
+>>>>>>> Stashed changes
 </body>
 {% endblock %}
