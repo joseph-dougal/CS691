@@ -127,7 +127,10 @@
 }
 /*------------------Features Section----------*/
 
-
+.features-sec .features-sec-body{
+    padding-left: 15px;
+    padding-right: 15px;
+}
 
 /*------------------Price Section----------*/
 .pricing-header {
