@@ -5,5 +5,5 @@
 DEBUG = True
 FLASK_ENV = 'development'
 SECRET_KEY = 'JD_12345'
-SQLALCHEMY_DATABASE_URI = "sqlite:///sqlite-db.db"
+SQLALCHEMY_DATABASE_URI = 'postgresql://ubuntu:cs#691@ec2-54-145-120-193.compute-1.amazonaws.com/postgres'
 SQLALCHEMY_TRACK_MODIFICATIONS = False

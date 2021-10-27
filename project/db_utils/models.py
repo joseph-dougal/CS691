@@ -52,6 +52,3 @@ class MathAnswer(db.Model):
             self.update_time = datetime.strptime(current_time, '%Y-%m-%d %H:%M:%S')
         else:
             self.update_time = update_time
-
-
-# db.create_all()

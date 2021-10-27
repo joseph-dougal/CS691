@@ -8,11 +8,11 @@ def db_setup():
     db.session.commit()
 
 
-def db_insert():
-
-    new_obj = User('jd.com', b'123')
-    db.session.add(new_obj)
-    db.session.commit()
+# def db_insert():
+#
+#     new_obj = User('jd.com', b'123')
+#     db.session.add(new_obj)
+#     db.session.commit()
 
 
 if __name__ == '__main__':
