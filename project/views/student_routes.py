@@ -21,9 +21,10 @@ def clean_df(df):
     # fill na's with empty string
     df = df.fillna('')
     # filter only columns we want to see in the UI
-    df = df[['question_id', 'question_x', 'answer']]
+    df = df[['question_id', 'question_x', 'expression', 'answer']]
     # update naming convention to be UI friendly
-    df = df.rename(columns={'question_id': 'Number', 'question_x': 'Question', 'answer': 'Answer'})
+    df = df.rename(columns={'question_id': 'Number', 'question_x': 'Question', 'expression': 'Expression',
+                            'answer': 'Answer'})
     return df
 
 
