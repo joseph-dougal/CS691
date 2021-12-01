@@ -10,6 +10,8 @@ db = SQLAlchemy(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login_routes.login'
+login_manager.login_message = "User needs to be logged in to view this page"
+login_manager.login_message_category = "warning"
 
 # We need to import the routes after the DB is instantiated
 from project.views.utility_routes import utility_routes

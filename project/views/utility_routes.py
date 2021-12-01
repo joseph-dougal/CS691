@@ -1,7 +1,8 @@
-from flask import render_template, Blueprint
+from flask import render_template, Blueprint, redirect, url_for, flash
+from flask_login import login_required, current_user
 from project import app
-import os
 from os import listdir
+import os
 
 utility_routes = Blueprint('utility_routes', __name__)
 
@@ -18,8 +19,12 @@ def index_ed():
 
 
 @utility_routes.route('/home', methods=["GET"])
+@login_required
 def home():
-    return render_template('pages/home.html')
+    if current_user.is_authenticated:
+        return render_template('pages/home.html')
+    else:
+        return redirect(url_for('utility_routes.index'))
 
 
 @utility_routes.route('/blank', methods=["GET"])

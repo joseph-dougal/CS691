@@ -45,8 +45,7 @@ def logout():
     db.session.add(user)
     db.session.commit()
     logout_user()
-    flash('Goodbye!', 'info')
-    return redirect(url_for('login_routes.login'))
+    return redirect(url_for('utility_routes.index'))
 
 
 @login_routes.route('/register', methods=['GET', 'POST'])
