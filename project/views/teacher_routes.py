@@ -10,8 +10,8 @@ from project.math_logic.equation_builder import MathExpression
 teacher_routes = Blueprint('teacher_routes', __name__)
 
 
-@login_required
 @teacher_routes.route('/teacher-math-question', methods=['GET', 'POST'])
+@login_required
 def home():
 
     """
@@ -40,8 +40,8 @@ def home():
         return render_template('pages/teacher-math.html', data=df)
 
 
-@login_required
 @teacher_routes.route('/teacher-math-edit', methods=['GET', 'POST'])
+@login_required
 def edit():
 
     """
@@ -90,8 +90,8 @@ def edit():
             return redirect(url_for('teacher_routes.home'))
 
 
-@login_required
 @teacher_routes.route('/delete', methods=['GET', 'POST'])
+@login_required
 def delete():
 
     """

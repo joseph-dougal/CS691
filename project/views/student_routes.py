@@ -28,8 +28,8 @@ def clean_df(df):
     return df
 
 
-@login_required
 @student_routes.route('/student-math-question', methods=['GET', 'POST'])
+@login_required
 def home():
 
     """
