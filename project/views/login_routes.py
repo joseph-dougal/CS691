@@ -35,7 +35,7 @@ def login():
         db.session.add(user)
         db.session.commit()
         login_user(user)
-        return redirect(url_for('utility_routes.home'))
+        return redirect(url_for('home_routes.home'))
 
 
 @login_routes.route('/logout', methods=['GET', 'POST'])
@@ -69,9 +69,7 @@ def register():
         db.session.commit()
         login_user(new_user)
         flash('Thanks for registering!', 'success')
-
-        return redirect(url_for('utility_routes.home'))
-
+        return redirect(url_for('home_routes.home'))
     else:
         flash('Email already exists', 'danger')
         return render_template('pages/register.html')

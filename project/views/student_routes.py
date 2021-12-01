@@ -1,6 +1,6 @@
 from flask import render_template, Blueprint, session, request, redirect, url_for, flash
 from project.db_utils.models import MathAnswer, MathTest
-from flask_login import login_required
+from flask_login import login_required, current_user
 from project import db
 import pandas as pd
 
@@ -38,7 +38,7 @@ def home():
     if request.method == 'POST':
         # variables submitted by form
         question_id = request.form['question_id']
-        user_id = 10
+        user_id = current_user.user_id
         question = request.form['question']
         answer = request.form['answer']
 
@@ -56,7 +56,8 @@ def home():
     else:
         # get math questions & answer df's join to display current answers
         df_test = pd.read_sql(db.session.query(MathTest).statement, db.engine, parse_dates=True)
-        df_answer = pd.read_sql(db.session.query(MathAnswer).statement, db.engine, parse_dates=True)
+        user_id = current_user.user_id
+        df_answer = pd.read_sql(db.session.query(MathAnswer).filter_by(user_id=user_id).statement, db.engine, parse_dates=True)
         # left join to get all questions and answers if they exists
         df = df_test.merge(df_answer, how='left', on='question_id')
         df = clean_df(df)
