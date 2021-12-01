@@ -1,6 +1,6 @@
-from flask import render_template, Blueprint, session, request, redirect, url_for, flash
+from flask import render_template, Blueprint, request, redirect, url_for, flash
+from flask_login import login_required, current_user
 from project.db_utils.models import MathTest
-from flask_login import login_required
 from sqlalchemy import exc
 from project import db
 import pandas as pd
@@ -20,7 +20,7 @@ def home():
     """
 
     if request.method == 'POST':
-        user_id = 5
+        user_id = current_user.user_id
         question = request.form['question']
         question = MathExpression(question)
         question = question.expression_string
@@ -35,8 +35,8 @@ def home():
         df = pd.read_sql(db.session.query(MathTest).statement, db.engine, parse_dates=True)
         df = df.rename(columns={'question_id': 'Number', 'user_id': 'User ID', 'question': 'Question',
                                 'create_date': 'Create Date', 'update_time': 'Update Time',
-                                'expression': 'Expression (Ex: 1, None, 2.3)'})
-        df = df[['Number', 'User ID', 'Question', 'Create Date', 'Update Time', 'Expression (Ex: 1, None, 2.3)']]
+                                'expression': 'Expression'})
+        df = df[['Number', 'User ID', 'Question', 'Create Date', 'Update Time', 'Expression']]
         return render_template('pages/teacher-math.html', data=df)
 
 
@@ -55,7 +55,6 @@ def edit():
         question_id = request.form['question_id']
         user_id = request.form['user_id']
         expression = request.form['expression']
-
         try:
             # check if the user submitted an answer and update if they did
             obj = db.session.query(MathTest).filter_by(question_id=question_id, user_id=user_id).first()
@@ -80,11 +79,13 @@ def edit():
 
             # commit the string value to the DB
             obj.expression = question.expression_string
+            obj.correct_answer = question.resolve()
             db.session.commit()
 
             flash('Expression Updated', 'success')
             return redirect(url_for('teacher_routes.home'))
         except exc.SQLAlchemyError as err:
+            print(err)
             message = 'Error Updating Expression \n' + str(err)
             flash(message, 'danger')
             return redirect(url_for('teacher_routes.home'))
