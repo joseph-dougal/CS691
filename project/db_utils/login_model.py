@@ -17,8 +17,9 @@ class User(db.Model):
     first_name = db.Column(db.String, nullable=False)
     last_name = db.Column(db.String, nullable=False)
     username = db.Column(db.String, nullable=False)
+    account = db.Column(db.String, nullable=False)
 
-    def __init__(self, email, password, firstname, lastname, username):
+    def __init__(self, email, password, firstname, lastname, username, account):
         self.email = email.lower()
         self.set_password(password)
 
@@ -29,6 +30,7 @@ class User(db.Model):
         self.first_name = firstname
         self.last_name = lastname
         self.username = username
+        self.account = account
 
     def set_password(self, password):
         self.password = generate_password_hash(password)

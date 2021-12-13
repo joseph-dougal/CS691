@@ -1,6 +1,7 @@
 from flask import render_template, Blueprint, session, request, redirect, url_for, flash
 from project.db_utils.models import MathAnswer, MathTest
 from flask_login import login_required, current_user
+from project.db_utils.login_model import User
 from project import db
 import pandas as pd
 
@@ -61,4 +62,5 @@ def home():
         # left join to get all questions and answers if they exists
         df = df_test.merge(df_answer, how='left', on='question_id')
         df = clean_df(df)
-        return render_template('pages/student-math.html', data=df)
+        user = User.query.filter_by(user_id=current_user.user_id).first()
+        return render_template('pages/student-math.html', data=df, account=user.account)

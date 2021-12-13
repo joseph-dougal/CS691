@@ -7,6 +7,10 @@
         <div class="sidebar-brand-text mx-3">Smart<sup>Grader</sup></div>
     </a>
 
+
+<!-- check account type and filter links -->
+{% if account == 'student' %}
+
     <!-- Divider -->
     <hr class="sidebar-divider">
 
@@ -30,6 +34,9 @@
         </div>
     </li>
 
+<!-- check account type and filter links -->
+{% else %}
+
     <!-- Divider -->
     <hr class="sidebar-divider">
 
@@ -52,6 +59,8 @@
             </div>
         </div>
     </li>
+
+{% endif %}
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
