@@ -1,5 +1,6 @@
 from flask import render_template, Blueprint, request, redirect, url_for, flash
 from flask_login import login_required, current_user
+from project.db_utils.login_model import User
 from project.db_utils.models import MathTest
 from datetime import datetime
 from sqlalchemy import exc
@@ -38,7 +39,8 @@ def home():
                                 'create_date': 'Create Date', 'update_time': 'Update Time',
                                 'expression': 'Expression'})
         df = df[['Number', 'User ID', 'Question', 'Create Date', 'Update Time', 'Expression']]
-        return render_template('pages/teacher-math.html', data=df)
+        user = User.query.filter_by(user_id=current_user.user_id).first()
+        return render_template('pages/teacher-math.html', data=df, account=user.account)
 
 
 @teacher_routes.route('/teacher-math-edit', methods=['GET', 'POST'])

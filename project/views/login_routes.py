@@ -59,7 +59,6 @@ def register():
     first_name = request.form['firstname']
     last_name = request.form['lastname']
     account = request.form['account']
-
     # Check if the user exists
     user = User.query.filter_by(email=email).first()
     if user is None:
