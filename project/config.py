@@ -1,6 +1,8 @@
-# backup in case the current URI doesn't work
-# from os import environ, path
-# database_uri = f'sqlite:///{path.abspath(path.dirname(__file__))}\\sqlite-db.db'
+# test db setup
+# import os
+# project_dir = os.path.dirname(os.path.abspath(__file__))
+# SQLALCHEMY_DATABASE_URI = "sqlite:///{}".format(os.path.join(project_dir, "sqlite-db.db"))
+
 
 DEBUG = True
 FLASK_ENV = 'development'
