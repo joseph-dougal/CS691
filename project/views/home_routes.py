@@ -1,5 +1,6 @@
 from flask import render_template, Blueprint, redirect, url_for, flash, request, make_response
 from project.db_utils.models import MathAnswer, MathTest
+from project.db_utils.login_model import User
 from flask_login import login_required, current_user
 from project import db
 import pandas as pd
@@ -50,8 +51,9 @@ def home():
     Home route gets users info from the DB based on Flask login's current_user ID
     """
     if current_user.is_authenticated:
+        user = User.query.filter_by(user_id=current_user.user_id).first()
         df = get_user_info()
-        return render_template('pages/home.html', data=df)
+        return render_template('pages/home.html', data=df, account=user.account)
     else:
         return redirect(url_for('utility_routes.index'))
 
