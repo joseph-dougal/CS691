@@ -1,37 +1,87 @@
-import sympy as sym
+from py_expression_eval import Parser
 
 
-class Expression:
+class MathExpression:
 
-    def __init__(self):
-        self.count = None
-        self.equation = None
-        self.variables = None
+    def __init__(self, equation_arg):
+        self.define(equation_arg)  # The define function is used to instantiate and redefine the equation if needed
 
-    def set_variables(self, name_string):
-        name_arr = name_string.split(' ')
-        variable_list = [None]*len(name_arr)
-        for i, name in enumerate(name_arr):
-            variable_list[i] = sym.var(name)
+    def define(self, equation_arg):
+        """
+        The define function is used to construct the MathExpression object. No field is private or protected.
 
-        self.variables = variable_list
-        self.count = len(variable_list)
-        return variable_list
+        Field structure:
+        expression_string, String
+        equation_parser, Parser Object
+        variables_list, List of Strings
+        """
+        self.expression_string = equation_arg  # expression_string contains the equation in string form
+        self.equation_parser = Parser().parse(equation_arg)  # equation_parser contains the parser object
+        self.variables_list = self.equation_parser.variables()  # variables_list contains the list of string variables
 
-    def define(self, user_equation):
-        self.equation = user_equation
+    def replace_variables(self, replacements_list):
+        """
+        The replace_variables function only accepts a list of integers argument. The list should be ordered
+        in the same order as the variables appear in the equation, lef to right. If a variables needs to
+        remain as a variable and not replaced with a number, use None in place of an integer/float. The list
+        argument must be the same length or shorter than the field variables_list.
+        """
+        assert len(replacements_list) <= len(
+            self.variables_list)  # Confirms that the argument is shorter than variables_list
 
-    def resolve(self, value_list):
-        answer = self.equation
-        for i in range(self.count):
-            answer = answer.subs(self.variables[i], value_list[i])
-        return answer
+        for i in range(len(replacements_list)):
 
-    def get_equation(self):
-        return self.equation
+            if replacements_list[i]:  # Only replace variable if replacement is not None
 
-    def get_count(self):
-        return self.count
+                # Replaces string value in field expression_string, replacement is converted from int/float to string
+                self.expression_string = self.expression_string.replace(self.variables_list[i],
+                                                                        str(replacements_list[i]))
 
-    def get_variables(self):
-        return self.variables
+        self.define(self.expression_string)  # MathExpression object is reconstructed from new string
+
+    def simplify(self):
+        """
+        The simplify function used in the original API of the Parser object to 'simplify' the expression.
+        The simplification is to remove any ambiguity in the expression with the inclusion of verbose
+        parenthesis. If this is not needed in the use of MathExpression, feel free to delete this.
+        """
+        simplified_string = self.equation_parser.simplify(
+            {}).toString()  # Rewrites Parser object to include verbose parenthesis, returns string
+
+        self.define(
+            simplified_string)  # Reconstructs MathExpression object using verbose parenthesis form from string equation
+
+    def resolve(self, values=None):
+        """
+        The resolve function returns the result of the equation, int/float. If the equation requires values for
+        any of the remaining variables, they should be passed in the argument values as a list of
+        int/floats.
+        """
+
+        if values:  # Assert that values is not None
+
+            prev_expression_string = self.expression_string  # Retain current expression_string with variable as string
+
+            self.replace_variables(values)  # Replace variables in MathExpression object with int/float values
+
+            result = self.equation_parser.evaluate({})  # Evaluate Parser object, returns int/float
+
+            self.define(prev_expression_string)  # Redefine MathExpression object with previous expression_string
+
+            return result  # Return int/float result of Parser object
+
+        else:
+            return self.equation_parser.evaluate({})  # Return int/float result of Parser object
+
+    # Various print functions for ease in design/implementation, no field is private/protected
+    def print_variables(self):
+        print(self.variables_list)
+
+    def print_num_variables(self):
+        print(len(self.variables_list))
+
+    def print_expression(self):
+        print(self.expression_string)
+
+    def print_resolve(self, values=None):
+        print(self.resolve(values))

@@ -1,37 +1,19 @@
-from flask import render_template, Blueprint, session, request, redirect, url_for, flash
+from flask import render_template, Blueprint, request, redirect, url_for, flash
+from flask_login import login_required, current_user
+from project.db_utils.login_model import User
 from project.db_utils.models import MathTest
-from flask_login import login_required
+from datetime import datetime
 from sqlalchemy import exc
 from project import db
 import pandas as pd
 
-from project.math_logic.equation_builder import Expression
-from random import randrange
+from project.math_logic.equation_builder import MathExpression
 
 teacher_routes = Blueprint('teacher_routes', __name__)
 
 
-def create_math_equation():
-
-    my_equation = Expression()
-    x, y = my_equation.set_variables('x y')
-    my_equation.define(y * y + x * y + 3)
-
-    x_var = randrange(10)
-    y_var = randrange(10)
-
-    answer = my_equation.resolve([x_var, y_var])
-
-    x_var = randrange(10)
-    y_var = randrange(10)
-
-    question = f'What is {my_equation.get_equation()} when x is {x_var} and y is {y_var}'
-
-    return question, answer
-
-
-@login_required
 @teacher_routes.route('/teacher-math-question', methods=['GET', 'POST'])
+@login_required
 def home():
 
     """
@@ -40,9 +22,13 @@ def home():
     """
 
     if request.method == 'POST':
-        user_id = 5
+        user_id = current_user.user_id
         question = request.form['question']
+        question = MathExpression(question)
+        question = question.expression_string
+
         new_object = MathTest(user_id, question)
+
         db.session.add(new_object)
         db.session.commit()
         flash('New Question Added', 'success')
@@ -50,12 +36,66 @@ def home():
     else:
         df = pd.read_sql(db.session.query(MathTest).statement, db.engine, parse_dates=True)
         df = df.rename(columns={'question_id': 'Number', 'user_id': 'User ID', 'question': 'Question',
-                                'create_date': 'Create Date', 'update_time': 'Update Time'})
-        return render_template('pages/teacher-math.html', data=df)
+                                'create_date': 'Create Date', 'update_time': 'Update Time',
+                                'expression': 'Expression'})
+        df = df[['Number', 'User ID', 'Question', 'Create Date', 'Update Time', 'Expression']]
+        user = User.query.filter_by(user_id=current_user.user_id).first()
+        return render_template('pages/teacher-math.html', data=df, account=user.account)
 
 
+@teacher_routes.route('/teacher-math-edit', methods=['GET', 'POST'])
 @login_required
+def edit():
+
+    """
+    The /edit route is used to create equation details
+    :return:
+    """
+
+    if request.method == 'POST':
+
+        # default (need to get this from user login details)
+        question_id = request.form['question_id']
+        user_id = request.form['user_id']
+        expression = request.form['expression']
+        try:
+            # check if the user submitted an answer and update if they did
+            obj = db.session.query(MathTest).filter_by(question_id=question_id, user_id=user_id).first()
+
+            # call the MathExpression class with the question created by the user
+            question = obj.question
+            question = MathExpression(question)
+
+            # convert string to list of int, float, or None type
+            new_expression = []
+            result = [x.strip() for x in expression.split(',')]
+            for x in result:
+                if x.isnumeric():
+                    new_expression.append(int(x))
+                elif x.replace('.', '', 1).isdigit():
+                    new_expression.append(float(x))
+                else:
+                    new_expression.append(None)
+
+            # call the replace_variables() function to generate the expression
+            question.replace_variables(new_expression)
+
+            # commit the string value to the DB
+            obj.expression = question.expression_string
+            obj.correct_answer = question.resolve()
+            db.session.commit()
+
+            flash('Expression Updated', 'success')
+            return redirect(url_for('teacher_routes.home'))
+        except exc.SQLAlchemyError as err:
+            print(err)
+            message = 'Error Updating Expression \n' + str(err)
+            flash(message, 'danger')
+            return redirect(url_for('teacher_routes.home'))
+
+
 @teacher_routes.route('/delete', methods=['GET', 'POST'])
+@login_required
 def delete():
 
     """
