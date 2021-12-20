@@ -1,6 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 import flask
+import werkzeug
 
 app = flask.Flask(__name__)
 app.config.from_pyfile('config.py')
@@ -40,3 +41,7 @@ def handle_404(e):
 @app.errorhandler(401)
 def handle_401(e):
     return flask.render_template('pages/401.html')
+
+@app.errorhandler(werkzeug.routing.BuildError)
+def handle_bad_request(e):
+    return flask.render_template('pages/404.html')
