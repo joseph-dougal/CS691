@@ -4,6 +4,10 @@
     padding: 1.1em !important;
 }
 
+.katex { 
+    font-size: inherit !important;
+}
+
 .alert {
     position: fixed !important;
     right: 0 !important;
