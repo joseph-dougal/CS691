@@ -34,6 +34,8 @@ def load_user(user_id):
 
 
 @app.errorhandler(404)
+@app.errorhandler(werkzeug.routing.BuildError)
+@app.errorhandler(werkzeug.exceptions.BadRequest)
 def handle_404(e):
     return flask.render_template('pages/404.html')
 
@@ -41,7 +43,3 @@ def handle_404(e):
 @app.errorhandler(401)
 def handle_401(e):
     return flask.render_template('pages/401.html')
-
-@app.errorhandler(werkzeug.routing.BuildError)
-def handle_bad_request(e):
-    return flask.render_template('pages/404.html')
