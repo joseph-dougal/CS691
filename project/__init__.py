@@ -1,6 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 import flask
+import werkzeug
 
 app = flask.Flask(__name__)
 app.config.from_pyfile('config.py')
@@ -33,6 +34,8 @@ def load_user(user_id):
 
 
 @app.errorhandler(404)
+@app.errorhandler(werkzeug.routing.BuildError)
+@app.errorhandler(werkzeug.exceptions.BadRequest)
 def handle_404(e):
     return flask.render_template('pages/404.html')
 

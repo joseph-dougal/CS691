@@ -1,3 +1,13 @@
+.form-control-user {
+    border-radius: 50px !important;
+    height: calc(2.9em + .75rem + 2px);
+    padding: 1.1em !important;
+}
+
+.katex { 
+    font-size: inherit !important;
+}
+
 .alert {
     position: fixed !important;
     right: 0 !important;
