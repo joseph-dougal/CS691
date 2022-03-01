@@ -15,10 +15,7 @@
     z-index: 99999 !important;
 }
 
-.jumbotron {
-    margin-bottom: 10px;
-    padding-bottom: 20px;
-}
+
 /*------------------Navigation Bar---------------*/
 .navbar {
     padding-top: 20px;
@@ -140,37 +137,14 @@
 }
 /*------------------Features Section----------*/
 
-.features-sec {
+.features-sec .features-sec-body{
     padding-left: 15px;
     padding-right: 15px;
-    margin-bottom: 200px;
 }
 
-.features-sec1 {
-    padding-left: 15px;
-    padding-right: 15px;
-    margin-top: 200px;
-    margin-bottom: 300px;
-}
-
-.features-sec-body{
-    padding-left: 15px;
-    padding-right: 15px;
-    
-}
-
-.features-sec1-body{
-    margin-top: 200px;
-    padding-top: 20px;
-    padding-left: 15px;
-    padding-right: 15px;
-    
-}
 /*------------------Price Section----------*/
-.pricing-sec {
-    padding-left: 15px;
-    padding-right: 15px;
-    /* margin-top: 200px; */
+.pricing-header {
+    margin-top: 60px;
     max-width: 700px;
 }
 
@@ -178,7 +152,7 @@
     background: #fff;
     font-family: Roboto, sans-serif;
     text-align: center;
-    padding: 5px 0 60px;
+    padding: 20px 0 30px;
 }
 
 .pricingTable .pricingTable-header {
@@ -190,7 +164,7 @@
 }
 
 .pricingTable .price-value {
-    padding-left: 10px;
+    padding-left: 25px;
 }
 
 .pricingTable .price-value .currency {
@@ -201,9 +175,9 @@
     display: inline-block;
 }
 .pricingTable .price-value .amount {
-    font-size: 50px;
+    font-size: 80px;
     font-weight: 500;
-    line-height: 60px;
+    line-height: 80px;
     display: inline-block;
 }
 
@@ -212,7 +186,7 @@
     font-weight: 400;
     letter-spacing: 0.5px;
     text-transform: uppercase;
-    margin: 20px 0 0 -8px;
+    margin: 2px 0 0 -20px;
     display: inline-block;
 }
 
@@ -340,7 +314,7 @@
 
 /*-----------Contact Section-------------*/
 .mycontact .contact-header {
-    margin-top: 300px;
+    margin-top: 60px;
     max-width: 700px;
     text-align:center;
 }
@@ -360,7 +334,6 @@
     position: absolute;
 }
 
-
 /*-----------Footer Section-------------*/
 .fixed-bottom {
     left: 0;
@@ -370,12 +343,15 @@
     padding: 2px 15px 2px 15px;
 }
 
-/* .fixed-bottom .p-3 {
+.fixed-bottom .p-3 {
     
-} */
+}
 
+<<<<<<< Updated upstream
 
 /*responsive css*/
+=======
+>>>>>>> Stashed changes
 
 /*------------------responsive css-----------------------------*/
 
