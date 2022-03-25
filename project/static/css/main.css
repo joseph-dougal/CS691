@@ -1,0 +1,411 @@
+.form-control-user {
+    border-radius: 50px !important;
+    height: calc(2.9em + .75rem + 2px);
+    padding: 1.1em !important;
+}
+
+.katex { 
+    font-size: inherit !important;
+}
+
+.alert {
+    position: fixed !important;
+    right: 0 !important;
+    margin-right: 30px !important;
+    z-index: 99999 !important;
+}
+
+
+/*------------------Navigation Bar---------------*/
+.navbar {
+    padding-top: 20px;
+    margin-bottom: 20px;
+    font-weight:700;
+}
+
+.navbar-light .navbar-nav .nav-link{
+    color: black;
+}
+
+.navbar-light .navbar-nav .nav-link.active,
+.navbar-light .navbar-nav .nav-link:hover{
+    color: cadetblue;
+}
+
+/*---------Hero Slider Section------------------*/
+.carousel {
+    margin-bottom: 4rem;
+}
+
+.carousel-item > img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    height: 100vh;
+}
+
+.carousel-item{
+    height: 100vh;
+    background: no-repeat scroll center scroll;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+.carousel-item:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #000000;
+    opacity: 0.5;
+}
+.carousel-caption{
+    bottom: 120px;
+    padding-left: 50px;
+    padding-right: 50px;
+    z-index: 10;
+}
+
+.carousel-item .caption {
+    background-color: rgba(0, 0, 0, .7);
+    transform: translateY(-60%)
+}
+
+.carousel-caption h1{
+    font-size: 50px;
+    font-weight: 700;
+    color:antiquewhite;
+}
+.carousel-caption p{
+    font-size: 20px;
+    top: 2rem;
+}
+
+.carousel-fade .carousel-item {
+    opacity: 0;
+    transition-duration: .6s;
+    transition-property: opacity;
+}
+
+.carousel-fade .carousel-item.active,
+.carousel-fade .carousel-item-next.carousel-item-left,
+.carousel-fade .carousel-item-prev.carousel-item-right {
+    opacity: 1;
+}
+
+.carousel-fade .active.carousel-item-left,
+.carousel-fade .active.carousel-item-right {
+    opacity: 0;
+}
+
+.carousel-fade .carousel-item-next,
+.carousel-fade .carousel-item-prev,
+.carousel-fade .carousel-item.active,
+.carousel-fade .active.carousel-item-left,
+.carousel-fade .active.carousel-item-prev {
+    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
+}
+
+.slider-btn{
+    margin-top: 30px;
+}
+.slider-btn .btn{
+    background-color: lightcoral;
+    color: white;
+    border-radius: 15px;
+    padding: 1rem 1rem;
+    font-size: 1rem;
+    margin-right: 15px;
+}
+
+.slider-btn .btn:hover{
+    color:white;
+    background-color: cadetblue;
+}
+
+.slider-btn .student_btn2{
+    color: #000000;
+    background-color: beige;
+}
+.slider-btn .teacher_btn1 {
+    color: #000000;
+    background-color: beige;
+}
+/*------------------Features Section----------*/
+
+.features-sec .features-sec-body{
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/*------------------Price Section----------*/
+.pricing-header {
+    margin-top: 60px;
+    max-width: 700px;
+}
+
+.pricingTable {
+    background: #fff;
+    font-family: Roboto, sans-serif;
+    text-align: center;
+    padding: 20px 0 30px;
+}
+
+.pricingTable .pricingTable-header {
+    color: #fff;
+    background: linear-gradient(to right,lightcoral,#00b3c3);
+    padding: 30px 20px 60px;
+    margin: 0 0 10px;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 75%, 0 100%);
+}
+
+.pricingTable .price-value {
+    padding-left: 25px;
+}
+
+.pricingTable .price-value .currency {
+    font-size: 35px;
+    font-weight: 500;
+    line-height: 45px;
+    vertical-align: top;
+    display: inline-block;
+}
+.pricingTable .price-value .amount {
+    font-size: 80px;
+    font-weight: 500;
+    line-height: 80px;
+    display: inline-block;
+}
+
+.pricingTable .price-value .duration {
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin: 2px 0 0 -20px;
+    display: inline-block;
+}
+
+.pricingTable .title {
+    color: lightcoral;
+    font-size: 45px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin: 0 0 30px;
+}
+
+.pricingTable .pricing-content {
+    font-family: 'Lato', sans-serif;
+    padding: 0 33px;
+    margin: 0 0 30px;
+    list-style: none;
+}
+
+.pricingTable .pricing-content li {
+    color: #555;
+    background: #efefef;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 40px;
+    text-transform: uppercase;
+    padding: 5px 15px 5px 50px;
+    margin: 0 0 5px;
+    position: relative;
+}
+
+.pricingTable .pricing-content li:last-child {
+    margin-bottom: 0;
+}
+
+.pricingTable .pricing-content li:before {
+    content: "\f00c";
+    color: #fff;
+    background: linear-gradient(to right,lightcoral,#00b3c3);
+    font-family: "Font Awesome 5 Free";
+    font-size: 14px;
+    font-weight: 900;
+    line-height: 23px;
+    width: 23px;
+    height: 23px;
+    border-radius: 50%;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+}
+
+.pricingTable .pricing-content li.disable:before {
+    content: "\f00d";
+}
+
+.pricingTable .pricingTable-signup a {
+    color: #fff;
+    background: linear-gradient(to right,lightcoral,#00b3c3);
+    font-size: 25px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 3px 30px 4px;
+    border-radius: 50px;
+    display: inline-block;
+    transition: all 0.3s;
+}
+
+.pricingTable .pricingTable-signup a:hover {
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.4);
+}
+
+
+.pricingTable.cadetblue .pricingTable-header,
+.pricingTable.cadetblue .pricing-content li:before,
+.pricingTable.cadetblue .pricingTable-signup a {
+    background: linear-gradient(to right,cadetblue,#56ab2f);
+}
+
+.pricingTable.babyblue .title {
+    color: cadetblue;
+}
+
+.pricingTable.choco .pricingTable-header,
+.pricingTable.choco .pricing-content li:before,
+.pricingTable.choco .pricingTable-signup a {
+    background: linear-gradient(to right,rgb(148 82 10),#974686);
+}
+
+.pricingTable.choco .title {
+    color: rgb(148 82 10);
+}
+
+.pricingTable.babyblue .pricingTable-header,
+.pricingTable.babyblue .pricing-content li:before,
+.pricingTable.babyblue .pricingTable-signup a {
+    background: linear-gradient(to right,#4079de,#56ab2f);
+}
+
+.pricingTable.babyblue .title {
+    color: #4079de;
+}
+
+.pricingTable .ribbon {
+    width: 160px;
+    height: 32px;
+    font-size: 12px;
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+    box-shadow: 0px 2px 3px rgba(136, 136, 136, 0.25);
+    background: #4dbe3b;
+    transform: rotate(45deg);
+    position: absolute;
+    right: -42px;
+    top: 30px;
+    padding-top: 7px;
+}
+
+.pricingTable .sidenote {
+    font-size: 10px;
+    text-align:center;
+    color: black;
+}
+
+/*-----------Contact Section-------------*/
+.mycontact .contact-header {
+    margin-top: 60px;
+    max-width: 700px;
+    text-align:center;
+}
+
+.map-container-section {
+    overflow: hidden;
+    padding-bottom: 56.25%;
+    position: relative;
+    height: 0;
+}
+
+.map-container-section iframe {
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+
+/*-----------Footer Section-------------*/
+.fixed-bottom {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #4079de;
+    padding: 2px 15px 2px 15px;
+}
+
+.fixed-bottom .p-3 {
+    
+}
+
+<<<<<<< Updated upstream
+
+/*responsive css*/
+=======
+>>>>>>> Stashed changes
+
+/*------------------responsive css-----------------------------*/
+
+/*@media only screen and (min-width: 768px) and (max-width: 991px) {
+
+    .carousel-caption h2 {
+        font-size: 50px;
+    }
+}*/
+
+@media only screen and (max-width: 767px) {
+    .navbar-inverse .navbar-brand {
+        font-size: 30px;
+        padding: 20px 15px;
+    }
+
+    .navbar-collapse {
+        background: rgba(0, 0, 0, 0.5);
+    }
+    
+    .carousel-caption h1 {
+        font-size: 25px;
+    }
+
+    .carousel-caption p {
+        margin-bottom: 1.25rem;
+        font-size: 1.25rem;
+        line-height: 1.4;
+    }
+
+    .carousel-caption a {
+        padding: 10px 25px;
+    }
+
+    .slider-btn .btn {
+        border-radius: 10px;
+        padding: 0.5rem 0.5rem;
+        font-size: 0.5rem;
+        margin-right: 15px;
+    }
+
+}
+
+@media (min-width: 40em) {
+    /* Bump up size of carousel content */
+    .carousel-caption p {
+        margin-bottom: 1.25rem;
+        font-size: 1.25rem;
+        line-height: 1.4;
+    }
+}
+
+@media only screen and (max-width: 990px) {
+    .pricingTable {
+        margin: 0 0 40px 10px;
+    }
+}

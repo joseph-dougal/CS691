@@ -1,0 +1,341 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+
+{% block body %}
+
+<body data-spy="scroll" data-target="#navbarLanding">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-white">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">
+                    <img src="static/favicon.ico" width="30" height="30" class="d-inline-block align-top" alt="">
+                    Smart<sup>Grader</sup>
+                </a>
+                <button class="navbar-toggler" type="button"
+                        data-toggle="collapse" data-target="#navbarLanding"
+                        aria-controls="navbarLanding" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarLanding">
+                    <ul class="navbar-nav me-auto mb-2 mb-md-0 ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">
+                                Home <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#features2">Features</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#price_table2">Pricing</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact_section2">Contact</a>
+                        </li>
+
+                        <div class="dropdown-divider"></div>
+
+                        <li class="nav-item">
+                            <a class="nav-link border-left border-dark" href="/">
+                                For students
+                            </a>
+                        </li>
+
+                        <div class="dropdown-divider"></div>
+
+                        <li class="nav-item">
+                            <a class="nav-link border-left border-dark" href="/login">Sign in</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-----------------------------Image Slider-------------------------------------------->
+        <div class="container-fluid" id="Page_Slider2">
+            <div id="LandingSlides" class="carousel slide carousel-fade" data-ride="carousel"
+                 data-interval="3500">
+                <div class="carousel-inner">
+
+                    <div class="carousel-item active">
+                        <img class="d-block w-100" src="static/img/carousel/carousel_8.png" alt="First slide">
+                        <div class="carousel-caption caption d-md-block">
+                            <h1>Educators, it's never been easier to set and grade assessments!</h1>
+                            <p>
+                                At Smart Grader, we provided you with the best A.I. driven
+                                resources to make your assessment and grading hassel free.
+                            </p>
+                            <div class="slider-btn">
+                                <a class="btn teacher_btn1" role="button" href="/register">Register Free!</a>
+                                <a class="btn teacher_btn2" role="button" href="#contact-section2">Contact Us</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+
+                        <img class="d-block w-100" src="static/img/carousel/carousel_7.Jpg" alt="Second slide">
+
+                        <div class="carousel-caption caption d-md-block ">
+                            <h1>Join Today!</h1>
+                            <p>
+                                Why go through the stress of traditional testing. We provided EDUCATORS with the tools
+                                to test students efficiently and give feedback. Meeting your students at their points of need.
+                            </p>
+                            <div class="slider-btn">
+                                <a class="btn teacher_btn1" role="button" href="/register">Register Free!</a>
+                                <a class="btn teacher_btn2" role="button" href="#contact-section2">Contact Us</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-------------------------------- Features Section----------------------------------------->
+
+        <div id="features" class="features-sec">
+            <div class="jumbotron container-fluid">
+                <div class="features-sec-header p-3 pb-md-4 mx-auto text-center">
+                    <h1 class="display-4 fw-normal h1-responsive font-weight-bold">Features</h1>
+                    <p class="lead fs-5 text-muted">We are constantly adding new useful features to the platform.</p>
+                </div>
+            </div>
+
+            <div class="features-sec-body container-fluid">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 py-5">
+                    <div class="col-md-2 d-flex"></div>
+                    <div class="col d-flex align-items-start">
+                        <svg class="text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em"><use xlink:href="#bootstrap" /></svg>
+                        <div>
+                            <h4 class="font-weight-bold mb-0">Auto Grader</h4>
+                            <p>Students responses to both A.I. generated questions and the questions provided by the teacher are graded with ease.​</p>
+
+                        </div>
+                    </div>
+                    <div class="col d-flex align-items-start">
+                        <svg class="text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em"><use xlink:href="#bootstrap" /></svg>
+                        <div>
+                            <h4 class="font-weight-bold mb-0">Assignment Generator</h4>
+                            <p>Our A.I. creates assignment questions based in you course syllabus.​</p>
+
+                        </div>
+                    </div>
+                    <div class="col d-flex align-items-start">
+                        <svg class="text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em"><use xlink:href="#bootstrap" /></svg>
+                        <div>
+                            <h4 class="font-weight-bold mb-0">Direct Feedback</h4>
+                            <p>Give students personal feedback with A.I. guidance.​</p>
+                        </div>
+                    </div>
+                    <div class="col-md-2 d-flex align-items-start"></div>
+                </div>
+            </div>
+            <div class="jumbotron container-fluid"></div>
+        </div>
+
+
+        <!--------------------------------Price Section----------------------------------------->
+        <div id="price_table2">
+            <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+                <h1 class="display-4 fw-normal h1-responsive font-weight-bold">Pricing</h1>
+                <p class="lead fs-5 text-muted">We have a felxible subscription model to meet your academic needs.</p>
+            </div>
+
+            <div class="pricing">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="pricingTable">
+                                <div class="pricingTable-header">
+                                    <div class="price-value">
+                                        <span class="currency">$</span>
+                                        <span class="amount">0</span>
+                                        <span class="duration">/month</span>
+                                    </div>
+                                </div>
+                                <h3 class="title">Free</h3>
+                                <ul class="pricing-content">
+                                    <li>Assignment generator</li>
+                                    <li class="disable">Assignment grader</li>
+                                    <li class="disable">Student feedback</li>
+                                    <li class="disable">Support</li>
+                                    <li class="disable">Commitment</li>
+                                </ul>
+                                <div class="pricingTable-signup">
+                                    <a href="/register">Sign Up</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="pricingTable babyblue">
+                                <div class="pricingTable-header">
+                                    <div class="price-value">
+                                        <span class="currency">$</span>
+                                        <span class="amount">15</span>
+                                        <span class="duration">/month</span>
+                                    </div>
+                                </div>
+                                <h3 class="title">Basic</h3>
+                                <ul class="pricing-content">
+                                    <li>Assignment generator</li>
+                                    <li class="disable">Assignment grader</li>
+                                    <li>Student feedback</li>
+                                    <li class="disable">Support</li>
+                                    <li class="disable">Commitment</li>
+                                </ul>
+                                <div class="pricingTable-signup">
+                                    <a href="#">Sign Up</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="pricingTable choco">
+                                <div class="pricingTable-header">
+                                    <div class="ribbon">Popular</div>
+                                    <div class="price-value">
+                                        <span class="currency">$</span>
+                                        <span class="amount">20</span>
+                                        <span class="duration">/month</span>
+                                    </div>
+                                </div>
+                                <h3 class="title">Pro</h3>
+                                <ul class="pricing-content">
+                                    <li>Assignment generator</li>
+                                    <li>Assignment grader</li>
+                                    <li>Student feedback</li>
+                                    <li>Support</li>
+                                    <li>Commitment</li>
+                                </ul>
+                                <div class="pricingTable-signup">
+                                    <a href="#">Sign Up</a>
+                                </div>
+                                <p class="sidenote">One time payment for 4 months required.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="pricingTable cadetblue">
+                                <div class="pricingTable-header">
+                                    <div class="ribbon">Best Value</div>
+                                    <div class="price-value">
+                                        <span class="currency">$</span>
+                                        <span class="amount">10</span>
+                                        <span class="duration">/month</span>
+                                    </div>
+                                </div>
+                                <h3 class="title">Elite</h3>
+                                <ul class="pricing-content">
+                                    <li>Assignment generator</li>
+                                    <li>Assignment grader</li>
+                                    <li>Student feedback</li>
+                                    <li>Support</li>
+                                    <li>Commitment</li>
+                                </ul>
+                                <div class="pricingTable-signup">
+                                    <a href="#">Sign Up</a>
+                                </div>
+                                <p class="sidenote">One time payment for 12 months required.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!----------------------------------Contact Form Section----------------------------------->
+        <!-- Section: Contact  -->
+        <div class="container-fluid mycontact" id="contact_section2">
+            <div class="contact-header "></div>
+            <section class="my-5">
+
+                <!-- Section heading -->
+                <h1 class="display-4 fw-normal h1-responsive font-weight-bold">Contact Us</h1>
+                <!-- Section description -->
+                <p class="lead text-center w-responsive">
+                    We would love to hear from you.
+                </p>
+
+                <!-- Wrapper container -->
+                <div class="container-fluid py-4">
+                    <!-- Grid row -->
+                    <div class="row">
+                        <!-- Grid column 1-->
+                        <div class="col-xs-12 col-sm-6 col-lg-6 text-center address">
+
+                            <!--Google map-->
+                            <div id="map-container-section" class="z-depth-1-half map-container-section mb-4" style="height: 400px">
+                                <iframe src="https://maps.google.com/maps?q=Manhatan&t=&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0"
+                                        style="border:0" allowfullscreen></iframe>
+                            </div>
+
+                            <div class="row text-center">
+                                <div class="col-md-4"></div>
+                                <div class="col-md-4">
+                                    <a class="btn-floating blue accent-1">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </a>
+                                    <address>
+                                        <strong>Smart Grader</strong><br>
+                                        Seidenberg School of CSIS<br>
+                                        One Pace Plaza<br>
+                                        NY, New York, 10038<br>
+                                        <abbr title="Phone">P:</abbr> (800) 874-PACE
+                                    </address>
+                                </div>
+                                <div class="col-md-4"></div>
+                            </div>
+                        </div><!-- Grid column 1 end-->
+                        <!-- Grid column 2 -->
+                        <div class="col-lg-5 mb-lg-0 mb-4">
+                            <!-- Form with header -->
+                            <div class="card">
+                                <div class="card-body">
+                                    <!-- Header -->
+                                    <div class="form-header blue accent-1">
+                                        <h3 class="mt-2"><i class="fas fa-envelope"></i> Write to us:</h3>
+                                    </div>
+                                    <!-- Body -->
+                                    <div class="md-form form-group">
+                                        <i class="fas fa-user prefix grey-text"></i>
+                                        <input type="text" id="form-name" class="form-control" data-name="Name" required>
+                                        <label for="form-name">Your name</label>
+                                    </div>
+                                    <div class="md-form form-group">
+                                        <i class="fas fa-envelope prefix grey-text"></i>
+                                        <input type="text" id="form-email" class="form-control" data-name="Email Address" required>
+                                        <label for="form-email">Your email</label>
+                                    </div>
+                                    <div class="md-form form-group">
+                                        <i class="fas fa-tag prefix grey-text"></i>
+                                        <input type="text" id="form-Subject" class="form-control" data-name="Message Subject" required>
+                                        <label for="form-Subject">Subject</label>
+                                    </div>
+                                    <div class="md-form form-group">
+                                        <i class="fas fa-pencil-alt prefix grey-text"></i>
+                                        <textarea id="form-text" class="form-control md-textarea" rows="3"></textarea>
+                                        <label for="form-text">Send message</label>
+                                    </div>
+                                    <div class="text-center">
+                                        <!-- Form submit button -->
+                                        <div class="d-grid">
+                                            <button class="btn btn-primary btn-lg" type="submit">Submit</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- Form with header end -->
+                        </div><!-- Grid column 2 end -->
+                    </div><!-- Grid row -->
+                </div>
+            </section> <!-- Section: Contact end-->
+        </div>
+
+    </main>
+
+
+    <footer class="text-center flex-shrink-0 py-4 mt-auto text-light">
+        <div class="fixed-bottom p-3">
+            © 2021 Copyright: <a class="text-light" href="/">Smart<sup>Grader</sup></a>
+        </div>
+    </footer>
+</body>
+{% endblock %}
