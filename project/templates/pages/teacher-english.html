@@ -25,6 +25,14 @@
     <a href="" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm p-2 m-1" data-toggle="modal"
       data-target="#modalDeleteEnglishForm">Delete Question
     </a>
+
+    <a href="" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm p-2 m-1" data-toggle="modal"
+       data-target="#modalDisplayPDF">Show Text
+    </a>
+
+    <a href="" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm p-2 m-1" data-toggle="modal"
+       data-target="#modalUpdatePDF">Update Text
+    </a>
   </div>
 </div>
 
@@ -65,14 +73,25 @@
   </table>
 </div>
 
-<!--    <form action="/teacher-math-edit" method="POST">-->
-<!--      <td>-->
-      <td>
-        <span class="border-0"></span>
-        <button class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" type="submit">Update</button>
-        <p class="text-sm-start">{{ text }}</p>
-      </td>
-<!--    </form>-->
+<div class="modal fade" id="modalDisplayPDF" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Text For Questions</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="md-form mb-5">
+          <!-- Text -->
+          <p class="text-sm-start">{{ text }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- insert question modal -->
 <form action='/teacher-english-question' method='POST' class="needs-validation">
