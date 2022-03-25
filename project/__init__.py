@@ -18,12 +18,16 @@ login_manager.login_message_category = "warning"
 from project.views.utility_routes import utility_routes
 from project.views.teacher_routes import teacher_routes
 from project.views.student_routes import student_routes
+from project.views.teacher_english_routes import teacher_english_routes
+from project.views.student_english_routes import student_english_routes
 from project.views.login_routes import login_routes
 from project.views.home_routes import home_routes
 from project.db_utils.login_model import User
 app.register_blueprint(utility_routes)
 app.register_blueprint(teacher_routes)
 app.register_blueprint(student_routes)
+app.register_blueprint(teacher_english_routes)
+app.register_blueprint(student_english_routes)
 app.register_blueprint(login_routes)
 app.register_blueprint(home_routes)
 
