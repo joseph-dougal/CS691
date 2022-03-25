@@ -1,0 +1,131 @@
+{% extends "dashboard.html" %}
+{% block title %}Teacher{% endblock %}
+{% block content %}
+
+{% block head %}
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.js">
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body);">
+</script>
+{% endblock %}
+
+<!-- buttons -->
+<div class="d-flex justify-content-between align-items-center mt-2 ml-2 mb-4">
+  <div>
+    <h1 class="h3 mb-0 text-gray-800">English Questions</h1>
+  </div>
+  <div class="btn-group m-2" role="group">
+    <a href="" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm p-2 m-1" data-toggle="modal"
+      data-target="#modalAddEnglishForm">Insert Question
+    </a>
+
+    <a href="" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm p-2 m-1" data-toggle="modal"
+      data-target="#modalDeleteEnglishForm">Delete Question
+    </a>
+  </div>
+</div>
+
+
+<!-- data table -->
+<div class="table-responsive">
+  <table id="teacher-table" class="table" style="width:100%">
+    <thead>
+      <tr>
+        {% for col in data.columns %}
+        <th scope="col"> {{ col }} </th>
+        {% endfor %}
+        <th> Submit </th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for key, value in data.iterrows() %}
+      <tr>
+        <td> {{ value[0] }} </td>
+        <td> {{ value[1] }} </td>
+        <td> {{ value[2] }} </td>
+        <td> {{ value[3] }} </td>
+        <form action="/teacher-english-edit" method="POST">
+            <td>
+                <input type="text" name="question" placeholder="{{ value[4] }}" class="form-control validate" maxlength="50" required>
+            </td>
+
+            <td>
+                <span class="border-0"></span>
+                <button class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" type="submit">Update</button>
+            </td>
+            <input type="hidden" name="question_id" value="{{ value[0] }}">
+            <input type="hidden" name="user_id" value="{{ value[1] }}">
+        </form>
+        {% endfor %}
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!--    <form action="/teacher-math-edit" method="POST">-->
+<!--      <td>-->
+      <td>
+        <span class="border-0"></span>
+        <button class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" type="submit">Update</button>
+        <p class="text-sm-start">{{ text }}</p>
+      </td>
+<!--    </form>-->
+
+<!-- insert question modal -->
+<form action='/teacher-english-question' method='POST' class="needs-validation">
+  <div class="modal fade" id="modalAddEnglishForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <h4 class="modal-title w-100 font-weight-bold">Insert Question</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body mx-3">
+          <div class="md-form mb-5">
+            <!-- Text -->
+            <input type="text" name="question" placeholder="Enter New English Equation" class="form-control validate mb-2"
+              maxlength="50" required>
+          </div>
+        </div>
+        <div class="modal-footer d-flex justify-content-center">
+          <button class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<!-- insert question modal -->
+<form action='/delete-english-question' method='POST' class="needs-validation">
+  <div class="modal fade" id="modalDeleteEnglishForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <h4 class="modal-title w-100 font-weight-bold">Delete Question</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body mx-3">
+          <div class="md-form mb-5">
+            <!-- Text -->
+            <input type="number" name="question_id" placeholder="Enter Question ID to Delete"
+              class="form-control validate mb-2" maxlength="50" required>
+          </div>
+        </div>
+        <div class="modal-footer d-flex justify-content-center">
+          <button class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+{% endblock %}
