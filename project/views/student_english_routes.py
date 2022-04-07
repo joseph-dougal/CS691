@@ -1,5 +1,5 @@
 from flask import render_template, Blueprint, session, request, redirect, url_for, flash
-from project.db_utils.models import MathAnswer, MathTest
+from project.db_utils.models import EnglishAnswer, EnglishTest
 from flask_login import login_required, current_user
 from project.db_utils.login_model import User
 from project import db
@@ -22,9 +22,9 @@ def clean_df(df):
     # fill na's with empty string
     df = df.fillna('')
     # filter only columns we want to see in the UI
-    df = df[['question_id', 'question_x', 'expression', 'answer']]
+    df = df[['question_id', 'question_x', 'create_date', 'answer']]
     # update naming convention to be UI friendly
-    df = df.rename(columns={'question_id': 'Number', 'question_x': 'Question', 'expression': 'Expression',
+    df = df.rename(columns={'question_id': 'Number', 'question_x': 'Question', 'create_date': 'Create Date',
                             'answer': 'Answer'})
     return df
 
@@ -44,24 +44,26 @@ def home():
         answer = request.form['answer']
 
         # check if the user submitted an answer and update if they did
-        obj = db.session.query(MathAnswer).filter_by(question_id=question_id, user_id=user_id).first()
+        obj = db.session.query(EnglishAnswer).filter_by(question_id=question_id, user_id=user_id).first()
         if not obj:
-            new_object = MathAnswer(question_id, user_id, question, answer)
+            new_object = EnglishAnswer(question_id, user_id, question, answer)
             db.session.add(new_object)
             db.session.commit()
         else:
             obj.answer = answer
             db.session.commit()
         flash('Answer Submitted', 'success')
-        return redirect(url_for('student_routes.home'))
+        return redirect(url_for('student_english_routes.home'))
     else:
         # get math questions & answer df's join to display current answers
-        df_test = pd.read_sql(db.session.query(MathTest).statement, db.engine, parse_dates=True)
+        df_test = pd.read_sql(db.session.query(EnglishTest).statement, db.engine, parse_dates=True)
         user_id = current_user.user_id
-        df_answer = pd.read_sql(db.session.query(MathAnswer).filter_by(user_id=user_id).statement, db.engine,
+        df_answer = pd.read_sql(db.session.query(EnglishAnswer).filter_by(user_id=user_id).statement, db.engine,
                                 parse_dates=True)
         # left join to get all questions and answers if they exists
         df = df_test.merge(df_answer, how='left', on='question_id')
         df = clean_df(df)
         user = User.query.filter_by(user_id=current_user.user_id).first()
         return render_template('pages/student-english.html', data=df, account=user.account)
+
+
