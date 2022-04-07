@@ -95,7 +95,7 @@ class EnglishAnswer(db.Model):
     question_id = db.Column(db.Integer, nullable=True)
     user_id = db.Column(db.Integer, nullable=True)
     question = db.Column(db.String(250), nullable=True)
-    answer = db.Column(db.Float, nullable=True)
+    answer = db.Column(db.String(250), nullable=True)
     update_time = db.Column(db.DateTime, nullable=True)
 
     def __init__(self, question_id, user_id, question, answer, update_time=None):
