@@ -1,4 +1,5 @@
 <!-- Sidebar -->
+<<<<<<< Updated upstream
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
@@ -9,13 +10,35 @@
 
     <!-- Divider -->
     <hr class="sidebar-divider">
+=======
+<aside class="navbar-nav bg-gradient-primary sidebar sidebar-dark fixed-start accordion" id="accordionSidebar" style="overflow: visible;">
+
+<!-- check account type and filter links -->
+{% if account == 'student' %}
+>>>>>>> Stashed changes
 
     <!-- Heading -->
-    <div class="sidebar-heading">
-        Students
+    <div class="sidebar-heading d-flex align-items-center justify-content-center">
+        <h3>Student's Dashboard</h3>
+        <h4>SD</h4>
     </div>
 
-    <!-- Nav Item - Pages Collapse Menu -->
+    <!-- Nav Item ---> 
+    <li class="nav-item">
+        <a class="nav-link {% if 'index' in segment %} active {% endif %}" href="/home">
+            <i class="fas fa-home"></i>
+            <span class="nav-link-text ms-1">Overview</span>
+        </a>
+      </li> 
+
+    <li class="nav-item">
+        <a class="nav-link {% if 'index' in segment %} active {% endif %}" href="/report">
+            <i class="fa fa-tasks"></i>
+            <span class="nav-link-text ms-1">Performance Summary</span>
+        </a>
+      </li> 
+        
+    <!---  Pages Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
             aria-controls="collapseTwo">
@@ -30,15 +53,35 @@
         </div>
     </li>
 
+<<<<<<< Updated upstream
     <!-- Divider -->
     <hr class="sidebar-divider">
+=======
+<!-- check account type and filter links -->
+{% else %}
+>>>>>>> Stashed changes
 
     <!-- Heading -->
-    <div class="sidebar-heading">
-        Teachers
+    <div class="sidebar-heading d-flex align-items-center justify-content-center">
+        <h3>Teacher's Dashboard</h3>
+        <h4>TD</h4>
     </div>
+    <!-- Nav Item ---------->
+    <li class="nav-item">
+        <a class="nav-link {% if 'index' in segment %} active {% endif %}" href="/home">
+            <i class="fas fa-home"></i>
+            <span class="nav-link-text ms-1">Overview</span>
+        </a>
+      </li> 
+    
+    <li class="nav-item">
+        <a class="nav-link {% if 'index' in segment %} active {% endif %}" href="/report">
+            <i class="fa fa-tasks"></i>
+            <span class="nav-link-text ms-1">Performance Summary</span>
+        </a>
+    </li>
 
-    <!-- Nav Item - Pages Collapse Menu -->
+    <!----------Pages Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
             aria-controls="collapseTwo">
@@ -52,10 +95,16 @@
             </div>
         </div>
     </li>
+<<<<<<< Updated upstream
+=======
+   
+{% endif %}
+>>>>>>> Stashed changes
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
 
+<<<<<<< Updated upstream
 <!--
     &lt;!&ndash; Nav Item - Pages Collapse Menu &ndash;&gt;
     <li class="nav-item">
@@ -79,11 +128,37 @@
         </div>
     </li>
 -->
+=======
+    <li class="sidebar-subheading mt-3">
+        
+            <h4 class="ps-3 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">
+                Account pages</h4>
+    </li>
+
+    <hr class="sidebar-divider d-none d-md-block">
+
+    <li class="nav-item">
+        <a class="nav-link {% if 'billing' in segment %} active {% endif %}" href="/billing">
+            <i class="fa fa-credit-card-alt"></i>
+          <span class="nav-link-text ms-1">Billing</span>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link {% if 'support' in segment %} active {% endif %}" href="/support">
+            <i class="fa fa-life-ring"></i>
+            <span class="nav-link-text ms-1">Support</span>
+        </a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
+>>>>>>> Stashed changes
 
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
     </div>
 
-</ul>
+</aside>
 <!-- End of Sidebar -->

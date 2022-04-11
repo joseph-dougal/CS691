@@ -1,0 +1,112 @@
+{% extends "dashboard.html" %}
+{% block title %}Support{% endblock %}
+
+
+{% block content %}
+<!-- Main page coontainer begin  -->
+<div class="supbody container-fluid text-center" >
+    <!-- title -->
+    <div class="row">
+        <div class="container">
+            <h5 class="supbody-heading supbody-padding">Support</h5>
+        </div>   
+    </div>
+    <!-- search bar -->
+    <div class="row">
+        <div class="container">
+            <div class=" supbody-searchcard text-center">
+                <div class="supbody-card-body">
+                    <div class="row justify-content-center align-items-center">
+                        <h5 class="text-center">We are here to ensure you have a seamless experience on Smart Grader.</h5>
+                        <h5 class="text-center">Use the seacrh form below to find answers to our frequently asked questions.</h5>
+                    </div>
+                    <div class="row justify-content-center align-items-center">
+                        <div class="search-container">
+                            <form>
+                                <input type="text" placeholder="Search.." name="search">
+                                <button type="submit"><i class="fa fa-search"></i></button>
+                            </form>
+                        </div>    
+                    </div>
+                </div>
+            </div>
+        </div> 
+    <!-- End of search bar section  --> 
+    </div>
+    
+    <!-- Divider -->
+    <div class="row">
+        <div class="dash-divider"></div>
+    </div>
+
+    <!-- Column section -->
+    <div class="row">
+    <!-- FAQ column -->
+    <div class="col-lg-4 mb-lg-0 mb-2">
+        <div class="card">
+        <div class="supbody-card-body p-3">
+            <div class="border-radius-lg h-100">   
+            <div class="position-relative d-flex align-items-center justify-content-center h-100">
+                <div class="imageContainer ms-auto text-center mt-5 mt-lg-0">
+                    <a href="#">
+                        <div class="row d-flex align-items-center justify-content-center">
+                            <i class="fa fa-question-circle fa-4x"></i>
+                        </div>
+                        <div class="row d-flex align-items-center justify-content-center">
+                            <supbody-h3 class="font-weight-bolder">FAQ</supbody-h3>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <!-- Email column -->
+    <div class="col-lg-4 mb-lg-0 mb-2">
+        <div class="card">
+        <div class="supbody-card-body p-3">
+            <div class="border-radius-lg h-100">
+            <div class="position-relative d-flex align-items-center justify-content-center h-100">
+                <div class="imageContainer ms-auto text-center mt-5 mt-lg-0">
+                    <a href="#">
+                        <div class="row d-flex align-items-center justify-content-center">
+                            <i class="fa fa-envelope fa-4x"></i>
+                        </div>
+                        <div class="row d-flex align-items-center justify-content-center">
+                            <supbody-h3 class="font-weight-bolder">Email Us</supbody-h3>
+                        </div>   
+                    </a>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <!-- Call column -->     
+    <div class="col-lg-4 mb-lg-0 mb-2">
+        <div class="card">
+        <div class="supbody-card-body p-3">
+            <div class="border-radius-lg h-100">
+            <div class="position-relative d-flex align-items-center justify-content-center h-100">
+                <div class="imageContainer ms-auto text-center mt-5 mt-lg-0"> 
+                    <a href="#">
+                        <div class="row d-flex align-items-center justify-content-center">
+                            <i class="fa fa-phone-square fa-4x"></i>
+                        </div>
+                        <div class="row d-flex align-items-center justify-content-center">
+                            <supbody-h3 class="font-weight-bolder">Speak with a Rep</supbody-h3>
+                        </div>  
+                    </a>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <!--End of columns -->
+    </div>
+
+<!-- Main page coontainer end  -->
+</div>
+{% endblock content %}
