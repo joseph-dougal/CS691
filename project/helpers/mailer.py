@@ -7,7 +7,7 @@ def send_email(subject, to_email, html):
     url = 'https://api.sendinblue.com/v3/smtp/email'
 
     headers = {'Content-Type': 'application/json',
-               'api-key': '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'}
+               'api-key': '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'}
 
     payload = {"tags": ["user_initiated_email"],
                "sender": {"name": "cs691", "email": "support@cs691.com"},

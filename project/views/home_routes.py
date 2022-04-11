@@ -66,7 +66,6 @@ def home():
     else:
         return redirect(url_for('utility_routes.index'))
 
-
 @home_routes.route('/report', methods=["GET"])
 @login_required
 def report():
@@ -108,7 +107,6 @@ def support():
         return render_template('pages/support.html', data=df, account=user.account)
     else:
         return redirect(url_for('utility_routes.index'))
-
 
 @home_routes.route('/download', methods=['POST'])
 @login_required

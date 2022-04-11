@@ -1,3 +1,13 @@
+.form-control-user {
+    border-radius: 50px !important;
+    height: calc(2.9em + .75rem + 2px);
+    padding: 1.1em !important;
+}
+
+.katex { 
+    font-size: inherit !important;
+}
+
 .alert {
     position: fixed !important;
     right: 0 !important;
@@ -130,9 +140,6 @@
 }
 /*------------------Features Section----------*/
 
-<<<<<<< Updated upstream
-
-=======
 .features-sec {
     padding-left: 15px;
     padding-right: 15px;
@@ -151,7 +158,6 @@
     padding-right: 15px;
     
 }
->>>>>>> Stashed changes
 
 .features-sec1-body{
     margin-top: 200px;
@@ -160,6 +166,7 @@
     padding-right: 15px;
     
 }
+
 /*------------------Price Section------------------*/
 .pricing-sec {
     padding-left: 15px;

@@ -1,6 +1,7 @@
 from flask import render_template, Blueprint, session, request, redirect, url_for, flash
 from project.db_utils.models import MathAnswer, MathTest
-from flask_login import login_required
+from flask_login import login_required, current_user
+from project.db_utils.login_model import User
 from project import db
 import pandas as pd
 
@@ -21,14 +22,15 @@ def clean_df(df):
     # fill na's with empty string
     df = df.fillna('')
     # filter only columns we want to see in the UI
-    df = df[['question_id', 'question_x', 'answer']]
+    df = df[['question_id', 'question_x', 'expression', 'answer']]
     # update naming convention to be UI friendly
-    df = df.rename(columns={'question_id': 'Number', 'question_x': 'Question', 'answer': 'Answer'})
+    df = df.rename(columns={'question_id': 'Number', 'question_x': 'Question', 'expression': 'Expression',
+                            'answer': 'Answer'})
     return df
 
 
-@login_required
 @student_routes.route('/student-math-question', methods=['GET', 'POST'])
+@login_required
 def home():
 
     """
@@ -37,7 +39,7 @@ def home():
     if request.method == 'POST':
         # variables submitted by form
         question_id = request.form['question_id']
-        user_id = 10
+        user_id = current_user.user_id
         question = request.form['question']
         answer = request.form['answer']
 
@@ -55,8 +57,10 @@ def home():
     else:
         # get math questions & answer df's join to display current answers
         df_test = pd.read_sql(db.session.query(MathTest).statement, db.engine, parse_dates=True)
-        df_answer = pd.read_sql(db.session.query(MathAnswer).statement, db.engine, parse_dates=True)
+        user_id = current_user.user_id
+        df_answer = pd.read_sql(db.session.query(MathAnswer).filter_by(user_id=user_id).statement, db.engine, parse_dates=True)
         # left join to get all questions and answers if they exists
         df = df_test.merge(df_answer, how='left', on='question_id')
         df = clean_df(df)
-        return render_template('pages/student-math.html', data=df)
+        user = User.query.filter_by(user_id=current_user.user_id).first()
+        return render_template('pages/student-math.html', data=df, account=user.account)

@@ -25,23 +25,18 @@
         {% for col in data.columns %}
         <th scope="col"> {{ col }} </th>
         {% endfor %}
-        <th> Answer </th>
         <th> Submit </th>
       </tr>
     </thead>
     <tbody>
       {% for key, value in data.iterrows() %}
-      <!--
-      {% for k in value %}
-      <td> {{ k }} </td>
-      {% endfor %}
-    -->
       <tr>
         <td> {{ value[0] }} </td>
         <td> {{ value[1] }} </td>
+        <td> {{ value[2] }} </td>
         <form action="/student-math-question" method="POST">
           <td>
-            <input type="text" name="answer" placeholder="{{ value[2] }}" class="form-control validate" maxlength="50"
+            <input type="text" name="answer" placeholder="{{ value[3] }}" class="form-control validate" maxlength="50"
               required>
           </td>
           <td>

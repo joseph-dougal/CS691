@@ -23,27 +23,42 @@
 
 <<<<<<< Updated upstream
 <!-- data table -->
-<div class="table-responsive table-striped">
+<div class="table-responsive">
   <table id="teacher-table" class="table" style="width:100%">
     <thead>
       <tr>
         {% for col in data.columns %}
         <th scope="col"> {{ col }} </th>
         {% endfor %}
+        <th> Submit </th>
       </tr>
     </thead>
     <tbody>
       {% for key, value in data.iterrows() %}
       <tr>
-        {% for k in value %}
-        <!-- Need to configure equations storing: https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference https://personal.math.ubc.ca/~pwalls/math-python/jupyter/latex/ -->
-        <td> \( {{ k }} \)</td>
+        <td> {{ value[0] }} </td>
+        <td> {{ value[1] }} </td>
+        <td>$$ {{ value[2] }} $$</td>
+        <td> {{ value[3] }} </td>
+        <td> {{ value[4] }} </td>
+        <form action="/teacher-math-edit" method="POST">
+            <td>
+                <input type="text" name="expression" placeholder="{{ value[5] }}" class="form-control validate" maxlength="50" required>
+            </td>
+
+            <td>
+                <span class="border-0"></span>
+                <button class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" type="submit">Update</button>
+            </td>
+            <input type="hidden" name="question_id" value="{{ value[0] }}">
+            <input type="hidden" name="user_id" value="{{ value[1] }}">
+        </form>
         {% endfor %}
       </tr>
-      {% endfor %}
     </tbody>
   </table>
 </div>
+
 
 <!-- insert question modal -->
 <form action='/teacher-math-question' method='POST' class="needs-validation">

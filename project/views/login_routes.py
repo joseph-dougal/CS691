@@ -35,7 +35,7 @@ def login():
         db.session.add(user)
         db.session.commit()
         login_user(user)
-        return redirect(url_for('utility_routes.home'))
+        return redirect(url_for('home_routes.home'))
 
 
 @login_routes.route('/logout', methods=['GET', 'POST'])
@@ -45,8 +45,7 @@ def logout():
     db.session.add(user)
     db.session.commit()
     logout_user()
-    flash('Goodbye!', 'info')
-    return redirect(url_for('login_routes.login'))
+    return redirect(url_for('utility_routes.index'))
 
 
 @login_routes.route('/register', methods=['GET', 'POST'])
@@ -59,20 +58,18 @@ def register():
     username = request.form['username']
     first_name = request.form['firstname']
     last_name = request.form['lastname']
-
+    account = request.form['account']
     # Check if the user exists
     user = User.query.filter_by(email=email).first()
     if user is None:
 
-        new_user = User(email, pw, first_name, last_name, username)
+        new_user = User(email, pw, first_name, last_name, username, account)
         new_user.authenticated = True
         db.session.add(new_user)
         db.session.commit()
         login_user(new_user)
         flash('Thanks for registering!', 'success')
-
-        return redirect(url_for('utility_routes.home'))
-
+        return redirect(url_for('home_routes.home'))
     else:
         flash('Email already exists', 'danger')
         return render_template('pages/register.html')
