@@ -66,6 +66,47 @@ def home():
     else:
         return redirect(url_for('utility_routes.index'))
 
+@home_routes.route('/report', methods=["GET"])
+@login_required
+def report():
+
+    """
+    Home route gets users info from the DB based on Flask login's current_user ID
+    """
+    if current_user.is_authenticated:
+        user = User.query.filter_by(user_id=current_user.user_id).first()
+        df = get_user_info(user.account)
+        return render_template('pages/report.html', data=df, account=user.account)
+    else:
+        return redirect(url_for('utility_routes.index'))
+
+@home_routes.route('/billing', methods=["GET"])
+@login_required
+def billing():
+
+    """
+    Home route gets users info from the DB based on Flask login's current_user ID
+    """
+    if current_user.is_authenticated:
+        user = User.query.filter_by(user_id=current_user.user_id).first()
+        df = get_user_info(user.account)
+        return render_template('pages/billing.html', data=df, account=user.account)
+    else:
+        return redirect(url_for('utility_routes.index'))
+
+@home_routes.route('/support', methods=["GET"])
+@login_required
+def support():
+
+    """
+    Home route gets users info from the DB based on Flask login's current_user ID
+    """
+    if current_user.is_authenticated:
+        user = User.query.filter_by(user_id=current_user.user_id).first()
+        df = get_user_info(user.account)
+        return render_template('pages/support.html', data=df, account=user.account)
+    else:
+        return redirect(url_for('utility_routes.index'))
 
 @home_routes.route('/download', methods=['POST'])
 @login_required

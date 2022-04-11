@@ -1,46 +1,102 @@
 {% extends "dashboard.html" %}
 {% block title %}Home{% endblock %}
 
+
 {% block content %}
 
-<!-- buttons -->
-<div class="d-flex justify-content-between align-items-center mt-2 ml-2 mb-4">
-  <div>
-    <h1 class="h3 mb-0 text-gray-800">Test Results</h1>
-  </div>
+  <div class="container-fluid py-4">
 
-    <form action='/download' method="POST">
-        <div class="form-row">
-            <button class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm p-2 m-1"> Generate Report</button>
-            <input type="hidden" name="export_type" value="export_data">
+    <!-- Hero image -->
+    <div class="row">
+      <div class="card">
+        <div class="position-relative d-flex align-items-center justify-content-center h-100">
+          <img class="w-100 position-relative z-index-2 pt-4" src="/static/img/dashboard/teachers_img2.jpg" alt="rocket">
         </div>
-    </form>
+        <div id="overlay5"></div>
+      </div>   
+    </div>
 
-</div>
+    <!-- Divider -->
+    <div class="row">
+      <div class="dash-divider"></div>
+    </div>
 
+    <!-- Quick Navigation Boxes -->
+    <div class="row">
 
-<!-- data table -->
-<div class="table-responsive">
-  <table id="teacher-table" class="table" style="width:100%">
-    <thead>
-      <tr>
-        {% for col in data.columns %}
-        <th scope="col"> {{ col }} </th>
-        {% endfor %}
-      </tr>
-    </thead>
-    <tbody>
-        {% for key, value in data.iterrows() %}
-        <tr>
-                {% for k in value %}
-            <td scope="row">{{ k }}</td>
-                {% endfor %}
-        </tr>
-        {% endfor %}
-    </tbody>
+      <!-- summary column -->
+      <div class="col-lg-4 mb-lg-0 mb-2">
+        <div class="card">
+          <div class="card-body p-3">
+            <div class="bg-gradient-secondary border-radius-lg h-100">   
+              <div class="position-relative d-flex align-items-center justify-content-center h-100">
+                <div class="imageContainer ms-auto text-center mt-5 mt-lg-0">
+                  <a href="/report">
+                    <img class="w-100 position-relative z-index-2 pt-4" src="/static/img/dashboard/report.jpg" alt="report" width="150" height="300">
+                    <div id="overlay4"></div>
+                    <h5 class="captions font-weight-bolder">View Summary</h5>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- math column -->
+      <div class="col-lg-4 mb-lg-0 mb-2">
+        <div class="card">
+          <div class="card-body p-3">
+            <div class="bg-gradient-secondary border-radius-lg h-100">
+              <div class="position-relative d-flex align-items-center justify-content-center h-100">
+                <div class="imageContainer ms-auto text-center mt-5 mt-lg-0">
+                  {% if account == 'teacher' %}
+                    <a href="/teacher-math-question">
+                      <img class="w-100 position-relative z-index-2 pt-4" src="/static/img/dashboard/maths-1.jpg" alt="math" width="150" height="300">
+                      <div id="overlay4"></div>
+                      <h5 class="captions font-weight-bolder">Add Math Question</h5>
+                    </a> 
+                  {% else %}
+                    <a href="/student-math-question">
+                      <img class="w-100 position-relative z-index-2 pt-4" src="/static/img/dashboard/maths-1.jpg" alt="english" width="150" height="300">
+                      <div id="overlay4"></div>
+                      <h5 class="captions font-weight-bolder">Check Your Math Assignment</h5>
+                    </a>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- english column -->     
+      <div class="col-lg-4 mb-lg-0 mb-2">
+        <div class="card">
+          <div class="card-body p-3">
+            <div class="bg-gradient-secondary border-radius-lg h-100">
+              <div class="position-relative d-flex align-items-center justify-content-center h-100">
+                <div class="imageContainer ms-auto text-center mt-5 mt-lg-0">
+                  {% if account == 'teacher' %} 
+                    <a href="/teacher-english-question">
+                      <img class="w-100 position-relative z-index-2 pt-4" src="/static/img/dashboard/English-Banner.jpg" alt="english" width="150" height="300">
+                      <div id="overlay4"></div>
+                      <h5 class="captions font-weight-bolder">Upload a New Text</h5>
+                    </a>
+                  {% else %}
+                    <a href="/student-english-question">
+                      <img class="w-100 position-relative z-index-2 pt-4" src="/static/img/dashboard/English-Banner.jpg" alt="english" width="150" height="300">
+                      <div id="overlay4"></div>
+                      <h5 class="captions font-weight-bolder">Check Your English Assignment</h5>
+                    </a>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!--End of Quick Navigation Boxes -->
+    </div>
+  <!-- End of Container-fluid -->
+  </div>
+{% endblock content %}
 
-  </table>
-</div>
-
-
-{% endblock %}

@@ -14,16 +14,33 @@
     <!-- Custom styles for this template-->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/sb-admin-2.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/forms.css') }}">
 
     <!-- Favicon-->
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/4deef2973b.js" crossorigin="anonymous"></script>
+
+    <!-- Extensions for Dashboards -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.js">
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body);">
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
 
     {% block head %}
     {% endblock %}
 </head>
 
-{% block body %}
-{% endblock %}
+<body>
+    {% block body %}
+    {% endblock %}
+</body>
+
 
 <!-- 
 <div>
@@ -31,5 +48,9 @@
     <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
 </div>
 -->
-
+<footer class="text-center flex-shrink-0 py-4 mt-auto text-light">
+    <div class="fixed-bottom p-3">
+        © 2021 - 2022 Copyright: <a class="text-light" href="/">Smart<sup>Grader</sup></a>
+    </div>
+</footer>
 </html>
