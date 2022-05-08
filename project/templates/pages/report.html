@@ -6,7 +6,7 @@
       <!-- buttons -->
       <div class="d-flex justify-content-between align-items-center mt-2 ml-2 mb-4">
         <div>
-          <h1 class="h3 mb-0 text-gray-800">Test Results</h1>
+          <h1 class="h3 mb-0 text-gray-800">Math Results</h1>
         </div>
 
           <form action='/download' method="POST">
@@ -23,13 +23,13 @@
         <table id="teacher-table" class="table" style="width:100%">
           <thead>
             <tr>
-              {% for col in data.columns %}
+              {% for col in math_data.columns %}
               <th scope="col"> {{ col }} </th>
               {% endfor %}
             </tr>
           </thead>
           <tbody>
-              {% for key, value in data.iterrows() %}
+              {% for key, value in math_data.iterrows() %}
               <tr>
                       {% for k in value %}
                   <td scope="row">{{ k }}</td>
@@ -40,6 +40,45 @@
 
         </table>
       </div>
+
+    <div class="d-flex justify-content-between align-items-center mt-2 ml-2 mb-4">
+        <div>
+            <h1 class="h3 mb-0 text-gray-800">English Results</h1>
+        </div>
+
+        <form action='/download' method="POST">
+            <div class="form-row">
+                <button class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm p-2 m-1"> Generate Report</button>
+                <input type="hidden" name="export_type" value="export_data">
+            </div>
+        </form>
+
+    </div>
+
+    <!-- data table -->
+    <div class="table-responsive table-hover">
+        <table id="teacher-table" class="table" style="width:100%">
+            <thead>
+            <tr>
+                {% for col in english_data.columns %}
+                <th scope="col"> {{ col }} </th>
+                {% endfor %}
+            </tr>
+            </thead>
+            <tbody>
+            {% for key, value in english_data.iterrows() %}
+            <tr>
+                {% for k in value %}
+                <td scope="row">{{ k }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+            </tbody>
+
+        </table>
+    </div>
+
+
 </div>
 
 

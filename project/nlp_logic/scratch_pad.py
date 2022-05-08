@@ -1,4 +1,4 @@
-from project.nlp_logic.question_parser import gen_answer_list, print_answers
+from project.nlp_logic.question_parser import gen_answer_list, print_answers, grade_response
 from transformers import BertForQuestionAnswering
 from transformers import BertTokenizer
 import spacy
@@ -17,3 +17,6 @@ answer_list = gen_answer_list(text, question, nlp, par_len=9)
 
 print(question)
 print_answers(answer_list)
+
+x = grade_response('not following the curriculum', answer_list, nlp, limit=10)
+print(x)
