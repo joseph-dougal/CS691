@@ -238,7 +238,7 @@ def print_answers(answer_list, limit = 10):
         print(answer)
 
 
-def grade_response(response, answer_list, nlp, limit = 10):
+def grade_response(response, answer_list, nlp, limit=10):
     grade = 0
     total = 0
     for i, answer in enumerate(answer_list):
@@ -248,7 +248,7 @@ def grade_response(response, answer_list, nlp, limit = 10):
         response_score = cosine_score(response, answer_list[i][1], nlp)
         grade += response_score*answer_score
         total += answer_score
-    if ((grade/total)/100 >= 0.5):
+    if (grade/total)/100 >= 0.5:
         return "pass"
     else:
         return "fail"
