@@ -1,11 +1,11 @@
 from flask import render_template, Blueprint, redirect, url_for, flash, request, make_response
-from project.nlp_logic.question_parser import gen_answer_list, print_answers, grade_response
+# from project.nlp_logic.question_parser import gen_answer_list, print_answers, grade_response
 from project.db_utils.models import MathAnswer, MathTest, EnglishTest, EnglishAnswer
 from flask_login import login_required, current_user
-from transformers import BertForQuestionAnswering
+# from transformers import BertForQuestionAnswering
 from project.db_utils.login_model import User
-from transformers import BertTokenizer
-import spacy
+# from transformers import BertTokenizer
+# import spacy
 from project import db
 import pandas as pd
 
@@ -70,30 +70,31 @@ def get_english_results(account):
                                 db.engine, parse_dates=True)
 
     df = df_test.merge(df_answer, how='left', on='question_id')
-    df = check_answers(df)
+    # df = check_answers(df)
     df = clean_english_df(df)
     return df
 
 
-def check_answers(df):
-
-    df[['answer']] = df[['answer']].fillna('not answered yet')
-
-    for i, row in df.iterrows():
-        question = row['question_x']
-        user_answer = row['answer']
-        text = open('project/nlp_logic/input_text.txt', 'r')
-        text = text.read()
-        nlp = spacy.load('en_core_web_sm')
-        answer_list = gen_answer_list(text, question, nlp, par_len=9)
-        df['correct_answer'] = str(answer_list).strip('[]')
-        x = grade_response(user_answer, answer_list, nlp, limit=10)
-        df['Correct'] = x
-
-    return df
+# def check_answers(df):
+#
+#     df[['answer']] = df[['answer']].fillna('not answered yet')
+#
+#     for i, row in df.iterrows():
+#         question = row['question_x']
+#         user_answer = row['answer']
+#         text = open('project/nlp_logic/input_text.txt', 'r')
+#         text = text.read()
+#         nlp = spacy.load('en_core_web_sm')
+#         answer_list = gen_answer_list(text, question, nlp, par_len=9)
+#         df['correct_answer'] = str(answer_list).strip('[]')
+#         x = grade_response(user_answer, answer_list, nlp, limit=10)
+#         df['Correct'] = x
+#
+#     return df
 
 
 def clean_english_df(df):
+    df['Correct'] = ' '
     df = df.rename(columns={'question_id': 'Number', 'id': 'User ID', 'question_x': 'Question',
                             'correct_answer': 'Correct Answer', 'answer': 'Answer'})
     df = df[['Number', 'User ID', 'Question', 'Correct Answer', 'Answer', 'Correct']]
