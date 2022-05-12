@@ -1,0 +1,70 @@
+[Deployment for Ubuntu OS]
+	- Linux OS is required
+		- substitute yum commands if you're using a different OS 
+
+[Install python]
+	- yum install python
+
+[Setup virtual env]
+	- pip install virtualenv 
+	- virtualenv my_env
+
+[Install git]
+	- yum install git
+
+[Clone repo]
+	- mkdir my_app
+	- cd my_app
+	- git clone https://github.com/joseph-dougal/CS691.git
+
+[Install packages]
+	- cd /home/ubuntu/my_app/
+	- pip install requirements.txt
+		- make sure your virtual env is activated
+			- ex: activate /home/ubuntu/my_env/bin/activate
+
+[Setup gunicorn]
+	- create a service file to run your application
+	- cat /etc/systemd/system/my_app.service 
+	- ex:
+		[Unit]
+		Description=Gunicorn instance to serve myproject
+		After=network.target
+
+		[Service]
+		User=ubuntu
+		Group=www-data
+		WorkingDirectory=/home/ubuntu/my_app/
+		Environment="PATH=/home/ununtu/my_env/bin"
+		Environment="PYTHONPATH=/home/ubuntu/my_env/python:/home/ubuntu/my_app"
+		ExecStart=/home/ubuntu/my_env/bin/gunicorn --workers 3 --bind unix:my_app.sock -m 007 app:app --timeout 6000
+		Restart=on-abort
+
+		[Install]
+		WantedBy=multi-user.target
+
+[Install nginx]
+	- yum install nginx
+
+[Setup nginx config file]
+	- create nginx config file for "my_app"
+	- cat /etc/nginx/sites-enabled/my_app 
+	- ex:
+		server {
+		    listen [::]:80;
+		    listen 80;
+		    server_name my_app.com www.my_app;
+
+		    location / {
+		        include proxy_params;
+		        proxy_pass http://unix:/home/ubuntu/my_app/my_app.sock;
+		    }
+		}
+
+[Intall postgres, create database, and user]
+https://www.digitalocean.com/community/tutorials/how-to-install-postgresql-on-ubuntu-20-04-quickstart
+
+[Create postgres tables]
+- all of the database tables are defined as model
+- create_db.py file connects to the Postgres db and creates the tables
+Command: python /CS691/project/db_utils/create_db.py
